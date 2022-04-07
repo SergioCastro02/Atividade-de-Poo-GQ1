@@ -3,11 +3,12 @@ import java.util.ArrayList;
       //banco
 public class PavaoPrime implements VideoInterface{
 
-    private ArrayList<Video> midias;
+    private ArrayList<Episodio> midias;
 	private int contadorDeVideos;
 
     public PavaoPrime() {
-        midias = new ArrayList<Video>();
+        ArrayList filmes = new ArrayList<Movie>();
+        ArrayList series = new ArrayList<Serie>();
 		contadorDeVideos = 0;
     }
     

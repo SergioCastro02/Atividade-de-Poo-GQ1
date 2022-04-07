@@ -3,15 +3,13 @@ package basico;
 public abstract class Video {
 
     protected String name;
-    protected double temp;
     protected String genre;
     protected int  year;
     protected String nameCast;
     protected double time;
 
-    public Video (String name, double temp, String genre , int year , String nameCast) {
+    public Video (String name, String genre , int year , String nameCast) {
         this.name = name;
-        this.temp = temp;
         this.genre = genre;
         this.year = year;
         this.nameCast = nameCast;
@@ -27,14 +25,6 @@ public abstract class Video {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public double getTemp() {
-        return temp;
-    }
-
-    public void setTemp(double temp) {
-        this.temp = temp;
     }
 
     public String getGenre() {
