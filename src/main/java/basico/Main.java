@@ -14,7 +14,7 @@ public class Main {
         System.out.println("4- Mostrar informações"); //->interface
         int escolha = s.nextInt();
 
-        PavaoPrime tela1 = new PavaoPrime();
+        PavaoPrime tela01 = new PavaoPrime();
 
         if(escolha == 1){
             System.out.println("Digite o nome do filme");
@@ -25,15 +25,27 @@ public class Main {
             String genre = s.next();
             System.out.println("Digite o ano do filme");
             int year = s.nextInt();
-            System.out.println("Digite o nome do elenco");
+            System.out.println("Digite os nomes do elenco");
             String nameCast = s.next();
-            tela1.criarFilme(name, time, genre, year, nameCast);
+            tela01.criarFilme(name, time, genre, year, nameCast);
+
         }else if(escolha == 2){
+            System.out.println("Digite o nome da série");
+            String name = s.next();
+            System.out.println("Digite o tempo da série");
+            double time = s.nextDouble();
+            System.out.println("Digite o gênero da série");
+            String genre = s.next();
+            System.out.println("Digite o ano da série");
+            int year = s.nextInt();
+            System.out.println("Digite os nomes do elenco");
+            String nameCast = s.next();
+            tela01.criarSerie(name, time, genre, year, nameCast);
 
         }else if(escolha == 3){
-
+          // .play();
         }else if(escolha == 4){
-
+            //.pause();
         }
 
 

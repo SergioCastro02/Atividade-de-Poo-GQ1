@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Serie extends Video implements Info{
     
-    private ArrayList<Episodio> episodios;
+    private ArrayList<Episode> episodios;
     private int numEpisode;
 
     public Serie(String name, String genre, int year, String nameCast) {
@@ -21,7 +21,7 @@ public class Serie extends Video implements Info{
 
     @Override
     public boolean avancar(double valor) {
-        for(Episodio episodio : episodios){
+        for(Episode episodio : episodios){
             time = episodio.getTime() + valor;
             episodio.setTime(time);
         }
@@ -30,7 +30,7 @@ public class Serie extends Video implements Info{
 
     @Override
     public boolean voltar(double valor) {
-        for(Episodio episodio : episodios){
+        for(Episode episodio : episodios){
             time = episodio.getTime() - valor;
             episodio.setTime(time);
         }
@@ -45,6 +45,19 @@ public class Serie extends Video implements Info{
     );
         
                             
+    }
+
+    public boolean adicionarEpisodio(String name, double time){
+        if(name != "" && time != 0){
+            Episode episode = new Episode(name, time);
+            if(this.episodios.add(episode)){
+                return true;
+            }else{
+                return false;
+            }            
+        }else{
+            return false;
+        }
     }
     
 }

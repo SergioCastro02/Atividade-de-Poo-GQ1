@@ -1,10 +1,17 @@
 package basico;
 import java.util.ArrayList;
+
+import basico.exception.ExceptionAlreadyPaused;
+import basico.exception.ExceptionAlreadyPlayed;
       //banco
 public class PavaoPrime implements VideoInterface{
 
-    private ArrayList<Episodio> midias;
+
+    private ArrayList<Movie> filmes;
+    private ArrayList<Serie> series;
+    private ArrayList<Video> midias;
 	private int contadorDeVideos;
+    private boolean playing;
 
     public PavaoPrime() {
         ArrayList filmes = new ArrayList<Movie>();
@@ -12,10 +19,28 @@ public class PavaoPrime implements VideoInterface{
 		contadorDeVideos = 0;
     }
     
+    public void pause() throws ExceptionAlreadyPaused{
+        if(playing == true){
+            playing = false;
+            System.out.println("Vídeo pausado...");
+        }else{
+            throw new ExceptionAlreadyPaused();
+        }
+    }
+
+    public void play() throws ExceptionAlreadyPlayed{
+        if(playing == false){
+            playing = true;
+            System.out.println("Vídeo rolando...");            
+        }else{
+            throw new ExceptionAlreadyPlayed();
+        }
+    }
+
     public boolean criarFilme(String name, double temp, String genre,int year, String nameCast){
         if(name != "" && temp != 0 && year != 0 && nameCast != "" && genre != ""){
             Movie filme = new Movie(name, temp, genre, year, nameCast);
-            this.midias.add(filme);
+            this.filmes.add(filme);
             this.contadorDeVideos++;
             return true;
         }else{
@@ -36,8 +61,8 @@ public class PavaoPrime implements VideoInterface{
 
     public boolean criarSerie(String name, double temp, String genre,int year, String nameCast) {
         if(name != "" && temp != 0 && year != 0 && nameCast != "" && genre != ""){
-            Serie serie = new Serie(name, temp, genre, year, nameCast);
-            this.midias.add(serie);
+            Serie serie = new Serie(name, genre, year, nameCast);
+            this.series.add(serie);
             this.contadorDeVideos++;
             return true;
         }else{
