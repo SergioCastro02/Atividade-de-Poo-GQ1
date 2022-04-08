@@ -5,8 +5,7 @@ import basico.exception.ExceptionAlreadyPaused;
 import basico.exception.ExceptionAlreadyPlayed;
       //banco
 public class PavaoPrime implements VideoInterface{
-
-
+    
     private ArrayList<Movie> filmes;
     private ArrayList<Serie> series;
     private ArrayList<Video> midias;
@@ -14,9 +13,10 @@ public class PavaoPrime implements VideoInterface{
     private boolean playing;
 
     public PavaoPrime() {
-        ArrayList filmes = new ArrayList<Movie>();
-        ArrayList series = new ArrayList<Serie>();
+        this.filmes = new ArrayList<Movie>();
+        this.series = new ArrayList<Serie>();
 		contadorDeVideos = 0;
+
     }
     
     public void pause() throws ExceptionAlreadyPaused{
@@ -38,6 +38,7 @@ public class PavaoPrime implements VideoInterface{
     }
 
     public boolean criarFilme(String name, double temp, String genre,int year, String nameCast){
+        
         if(name != "" && temp != 0 && year != 0 && nameCast != "" && genre != ""){
             Movie filme = new Movie(name, temp, genre, year, nameCast);
             this.filmes.add(filme);
