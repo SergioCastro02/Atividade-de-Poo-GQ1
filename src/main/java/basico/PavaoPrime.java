@@ -9,8 +9,8 @@ public class PavaoPrime implements VideoInterface{
     private ArrayList<Movie> filmes;
     private ArrayList<Serie> series;
     private ArrayList<Video> midias;
-	private int contadorDeVideos;
-    private boolean playing;
+	private int contadorDeVideos = 0;
+    private boolean playing ;
 
     public PavaoPrime() {
         this.filmes = new ArrayList<Movie>();
@@ -18,24 +18,112 @@ public class PavaoPrime implements VideoInterface{
 		contadorDeVideos = 0;
 
     }
-    
-    public void pause() throws ExceptionAlreadyPaused{
-        if(playing == true){
-            playing = false;
-            System.out.println("Vídeo pausado...");
-        }else{
-            throw new ExceptionAlreadyPaused();
-        }
+
+    public Movie buscarFilme(String name){
+        Movie retorno=null;
+        for (Movie item : this.filmes ) {
+            System.out.println(item);
+            if(item.getName().equals(name)){
+                System.out.println("Encontrou!");
+                retorno = item;
+            }
+        }                 
+        return retorno;
     }
 
-    public void play() throws ExceptionAlreadyPlayed{
-        if(playing == false){
-            playing = true;
-            System.out.println("Vídeo rolando...");            
-        }else{
-            throw new ExceptionAlreadyPlayed();
-        }
+    public Serie buscarSerie(String name){
+        Serie retorno=null;
+        for (Serie item : this.series ) {
+            System.out.println(item);
+            if(item.getName().equals(name)){
+                System.out.println("Encontrou!");
+                retorno = item;
+            }
+        }                 
+        return retorno;
     }
+    
+    /*
+    public void pause(Video video) throws ExceptionAlreadyPaused{
+
+        Video busca = buscar(video);
+
+        if(busca == null){
+            System.out.println("Série não encontrada!");
+        }else{
+            if(playing == true){
+                playing = false;
+                System.out.println("Vídeo pausado...");
+            }else{
+                throw new ExceptionAlreadyPaused();
+            }
+        }    
+    }
+
+    public void play(String name) throws ExceptionAlreadyPlayed{
+
+        Video busca = buscar(video);
+
+        if(busca == null){
+            System.out.println("Série não encontrada!");
+        }else{
+            if(playing == false){
+                playing = true;
+                System.out.println("Vídeo rolando...");            
+            }else{
+                throw new ExceptionAlreadyPlayed();
+            }
+        }
+       
+    }
+*/
+    public void pausarSerie(String name) throws ExceptionAlreadyPaused{
+		for(Serie serie: this.series){
+			if (serie.getName().equals(name)){
+                this.playing = false;
+                System.out.println("Série pausada...");
+            }
+		}
+		throw new ExceptionAlreadyPaused();
+	}
+
+    public void playSerie(String name) throws ExceptionAlreadyPlayed{
+		for(Serie serie: this.series){
+			if (serie.getName().equals(name)){
+                System.out.println("Encontrei");                
+			    if(this.playing == false){
+                    this.playing = true;
+                    System.out.println("Série tocando...");
+                }else{
+                    throw new ExceptionAlreadyPlayed();
+                }
+            }
+		}
+		
+	}
+    public void pausarFilme(String name) throws ExceptionAlreadyPaused{
+		for(Movie filme: this.filmes){
+			if (filme.getName().equals(name)){
+                System.out.println("Encontrei");
+                this.playing = false;
+                System.out.println("Filme pausado...");
+			}else{
+                throw new ExceptionAlreadyPaused();
+            }
+		}
+		
+	}
+
+    public boolean playFilme(String name) throws ExceptionAlreadyPlayed{
+		for(Movie filme: this.filmes){
+			if (filme.getName().equals(name)){
+                System.out.println("Encontrei");
+                this.playing = true;
+                System.out.println("Filme tocando...");				
+			}
+		}
+		throw new ExceptionAlreadyPlayed();
+	}
 
     public boolean criarFilme(String name, double temp, String genre,int year, String nameCast){
         
