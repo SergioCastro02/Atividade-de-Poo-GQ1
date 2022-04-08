@@ -39,13 +39,12 @@ public class Serie extends Video implements Info{
 
     @Override
     public void mostrarInformacoes() {
-        System.out.println("Nome da Série :" + name +"\n"  +                            
-                            "Gênero da Série" + genre + "\n" +                                    
-                            "Ano da Série:" + year + "\n"+
-                            "Nome do elenco da Série:" + nameCast + "\n");
-                   
+        System.out.printf(" Nome do Filme: " + getName() +"\n"
+         + " Genero do filme:" + getGenre() +"\n" 
+         + " Ano do filme:" + getYear() +"\n"
+         + " Nome pro elenco" + getNameCast() +"\n");        
     }
-
+    
     public boolean adicionarEpisodio(String name, double time){
         if(name != "" && time != 0){
             Episode episode = new Episode(name, time);

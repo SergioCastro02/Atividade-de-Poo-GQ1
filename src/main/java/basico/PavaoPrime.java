@@ -6,26 +6,26 @@ import basico.exception.ExceptionAlreadyPlayed;
       //banco
 public class PavaoPrime implements VideoInterface{
     
-    private ArrayList<Movie> filmes;
+    private ArrayList<Movie> movies;
     private ArrayList<Serie> series;
     private ArrayList<Video> midias;
 	private int contadorDeVideos = 0;
-    private boolean playing ;
+    private boolean playing;
 
     public PavaoPrime() {
-        this.filmes = new ArrayList<Movie>();
+        this.movies = new ArrayList<Movie>();
         this.series = new ArrayList<Serie>();
 		contadorDeVideos = 0;
-
+        playing = true;
     }
 
     public Movie buscarFilme(String name){
         Movie retorno=null;
-        for (Movie item : this.filmes ) {
-            System.out.println(item);
-            if(item.getName().equals(name)){
+        for (Movie movie : this.movies ) {
+            System.out.println(movie);
+            if(movie.getName().equals(name)){
                 System.out.println("Encontrou!");
-                retorno = item;
+                retorno = movie;
             }
         }                 
         return retorno;
@@ -77,20 +77,44 @@ public class PavaoPrime implements VideoInterface{
        
     }
 */
+
+
+    public void mostrarInformacoesSerie(String name){
+        for(Serie serie : this.series){
+            if(serie.getName().equals(name)){
+                System.out.println(serie);
+            }else{
+                 System.out.println("Série não encontrada!");
+            }
+        }
+    }
+
+    public void mostrarInformacoesMovie(String name){
+        for(Movie filme : this.movies){
+            if(filme.getName().equals(name)){
+                System.out.println(filme);
+            }else{
+                System.out.println("Série não encontrada!");
+            }
+        }
+    }
+
     public void pausarSerie(String name) throws ExceptionAlreadyPaused{
 		for(Serie serie: this.series){
 			if (serie.getName().equals(name)){
-                this.playing = false;
-                System.out.println("Série pausada...");
+                if(this.playing == true){
+                    this.playing = false;
+                    System.out.println("Série pausada...");
+                }else{
+                    throw new ExceptionAlreadyPaused();
+                }
             }
 		}
-		throw new ExceptionAlreadyPaused();
 	}
 
     public void playSerie(String name) throws ExceptionAlreadyPlayed{
 		for(Serie serie: this.series){
-			if (serie.getName().equals(name)){
-                System.out.println("Encontrei");                
+			if (serie.getName().equals(name)){             
 			    if(this.playing == false){
                     this.playing = true;
                     System.out.println("Série tocando...");
@@ -99,54 +123,45 @@ public class PavaoPrime implements VideoInterface{
                 }
             }
 		}
-		
 	}
     public void pausarFilme(String name) throws ExceptionAlreadyPaused{
-		for(Movie filme: this.filmes){
-			if (filme.getName().equals(name)){
-                System.out.println("Encontrei");
-                this.playing = false;
-                System.out.println("Filme pausado...");
-			}else{
-                throw new ExceptionAlreadyPaused();
-            }
-		}
-		
-	}
-
-    public boolean playFilme(String name) throws ExceptionAlreadyPlayed{
-		for(Movie filme: this.filmes){
-			if (filme.getName().equals(name)){
-                System.out.println("Encontrei");
-                this.playing = true;
-                System.out.println("Filme tocando...");				
+		for(Movie movie: this.movies){
+			if (movie.getName().equals(name)){
+                if(this.playing == true){
+                    this.playing = false;
+                    System.out.println("Filme pausado...");
+                }else{
+                    throw new ExceptionAlreadyPaused();
+                }
 			}
 		}
-		throw new ExceptionAlreadyPlayed();
+	}
+
+    public void playFilme(String name) throws ExceptionAlreadyPlayed{
+		for(Movie movie: this.movies){
+			if (movie.getName().equals(name)){
+                if(this.playing == false){
+                    this.playing = true;
+                    System.out.println("Filme tocando...");	
+                }else{
+                    throw new ExceptionAlreadyPlayed();
+                }		
+			}
+		}
 	}
 
     public boolean criarFilme(String name, double temp, String genre,int year, String nameCast){
         
         if(name != "" && temp != 0 && year != 0 && nameCast != "" && genre != ""){
-            Movie filme = new Movie(name, temp, genre, year, nameCast);
-            this.filmes.add(filme);
+            Movie movie = new Movie(name, temp, genre, year, nameCast);
+            this.movies.add(movie);
             this.contadorDeVideos++;
             return true;
         }else{
             return false;
         }
     }
-    public void informacao(String name){
-        if (name != ""){
-            for(Video midia: this.midias){
-                if(midia.getName() == name){
-                   System.out.println(midia.toString());
-                }
-            }
-        }else{
-            System.out.println("Mídia não encontrada.");
-        }
-    }
+   
 
     public boolean criarSerie(String name, double temp, String genre,int year, String nameCast) {
         if(name != "" && temp != 0 && year != 0 && nameCast != "" && genre != ""){
@@ -160,12 +175,9 @@ public class PavaoPrime implements VideoInterface{
 
     }
 
-    
-
     @Override
     public int getVideos() {
         return this.midias.size();
     }
-
 
 }

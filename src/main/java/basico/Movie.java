@@ -1,4 +1,3 @@
-//
 package basico;
 public class Movie extends Video implements Info{
     
@@ -44,11 +43,10 @@ public class Movie extends Video implements Info{
     @Override
     public void mostrarInformacoes() {
         System.out.printf(" Nome do Filme: " + getName() +"\n"
-          + " Tempo de filme:" + getTime() +"\n"
-           + " Genero do filme:" + getGenre() +"\n" 
-           + " Ano do filme:" + getYear() +"\n"
-           + " Nome pro elenco" + getNameCast() +"\n");        
+        + " Tempo de filme:" + getTime() +"\n"
+         + " Genero do filme:" + getGenre() +"\n" 
+         + " Ano do filme:" + getYear() +"\n"
+         + " Nome pro elenco" + getNameCast() +"\n");        
     }
     
-
 }
