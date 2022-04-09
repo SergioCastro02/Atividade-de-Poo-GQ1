@@ -5,11 +5,12 @@ import basico.exception.ExceptionAlreadyPaused;
 import basico.exception.ExceptionAlreadyPlayed;
       //banco
 public class PavaoPrime implements VideoInterface{
-    
+    static Scanner s = new Scanner(System.in);
+
     private ArrayList<Movie> movies;
     private ArrayList<Serie> series;
     private ArrayList<Video> midias;
-	private int contadorDeVideos = 0;
+	private int cont = 0;
     private boolean playing;
 
     public PavaoPrime() {
@@ -78,23 +79,82 @@ public class PavaoPrime implements VideoInterface{
     }
 */
 
+    public void mostrarInformacoes(){
+        for(Video midia: this.midias){
+			System.out.println(midia.toString());
+		}
+    }
 
+    public boolean pause(String name) throws ExceptionAlreadyPaused {
+		for(Video midia: this.midias){
+			if (midia.getName().equals(name)){
+                if(this.playing == true){
+                    this.playing = false;
+                    System.out.println("Video pausado...");
+                }else{
+                    throw new ExceptionAlreadyPaused();
+                }
+            }
+		}
+		throw new ContaIneException();
+	}
+
+    public boolean play(String name) throws ExceptionAlreadyPlayed {
+		for(Video midia: this.midias){
+			if (midia.getName().equals(name)){
+                if(this.playing == true){
+                    this.playing = false;
+                    System.out.println("Video tocando...");
+                }else{
+                    throw new ExceptionAlreadyPlayed();
+                }
+            }
+		}
+		throw new ContaIneException();
+	}
+
+     public boolean criarFilme(String name, double temp, String genre,int year, String nameCast){
+        if(name != "" && temp != 0 && year != 0 && nameCast != "" && genre != ""){
+            Video movie = new Movie(name, temp, genre, year, nameCast);
+            this.midias.add(movie);
+            this.cont++;
+            return true;
+        }else{
+            return false;
+        }
+    }
+   
+    public boolean criarSerie(String name, double temp, String genre,int year, String nameCast) {
+        if(name != "" && temp != 0 && year != 0 && nameCast != "" && genre != ""){
+            Video serie = new Serie(name, temp, genre, year, nameCast);
+
+            System.out.println("Deseja adicionar quantos episódios?");
+            int op = (int) sc.nextInt();
+
+            for(int i=0; i<op; i++){
+                System.out.println("Digite o nome do episódio::");
+                String name = s.next();
+                System.out.println("Digite o tempo do episódio::");
+                double temp = s.nextDouble();
+                serie.adicionarEpisodio(name, temp);
+            }
+
+            this.midias.add(serie);
+            this.cont++;
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+/*
     public void mostrarInformacoesSerie(String name){
         for(Serie serie : this.series){
             if(serie.getName().equals(name)){
                 System.out.println(serie);
             }else{
                  System.out.println("Série não encontrada!");
-            }
-        }
-    }
-
-    public void mostrarInformacoesMovie(String name){
-        for(Movie filme : this.movies){
-            if(filme.getName().equals(name)){
-                System.out.println(filme);
-            }else{
-                System.out.println("Série não encontrada!");
             }
         }
     }
@@ -149,35 +209,6 @@ public class PavaoPrime implements VideoInterface{
 			}
 		}
 	}
-
-    public boolean criarFilme(String name, double temp, String genre,int year, String nameCast){
-        
-        if(name != "" && temp != 0 && year != 0 && nameCast != "" && genre != ""){
-            Movie movie = new Movie(name, temp, genre, year, nameCast);
-            this.movies.add(movie);
-            this.contadorDeVideos++;
-            return true;
-        }else{
-            return false;
-        }
-    }
-   
-
-    public boolean criarSerie(String name, double temp, String genre,int year, String nameCast) {
-        if(name != "" && temp != 0 && year != 0 && nameCast != "" && genre != ""){
-            Serie serie = new Serie(name, genre, year, nameCast);
-            this.series.add(serie);
-            this.contadorDeVideos++;
-            return true;
-        }else{
-            return false;
-        }
-
-    }
-
-    @Override
-    public int getVideos() {
-        return this.midias.size();
-    }
+*/
 
 }

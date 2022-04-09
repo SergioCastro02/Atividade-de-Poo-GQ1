@@ -3,12 +3,13 @@ package basico;
 import java.util.ArrayList;
 
 public class Serie extends Video implements Info{
-    
+
     private ArrayList<Episode> episodios;
     private int numEpisode;
 
     public Serie(String name, String genre, int year, String nameCast) {
         super(name, genre, year, nameCast);
+         this.episodios = new ArrayList<Episode>();
     }
 
     public int getNumEpisode() {
@@ -49,6 +50,7 @@ public class Serie extends Video implements Info{
         if(name != "" && time != 0){
             Episode episode = new Episode(name, time);
             if(this.episodios.add(episode)){
+                this.numEpisode++;
                 return true;
             }else{
                 return false;
@@ -57,5 +59,32 @@ public class Serie extends Video implements Info{
             return false;
         }
     }
+
+    public boolean removerEpisodio(String name){
+        for (Episode episode : this.episodes ) {
+            if(episode.getName().equals(name)){
+                if(this.episodios.remove(episode)){
+                    this.numEpisode--;
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        }  
+    }
     
+    @Override
+	public String toString() {
+		String retorno = "Série: " + this.name + "\n, Gênero: " + this.genre +
+			   "\n, Ano: " + this.year + "\n, Nome pro elenco: " + this.nameCast;
+
+        retorno += "\nEpisódios::";
+        for(Episode episode : this.episodes ){
+            retorno += "Título:" + episode.getTitulo() + 
+                        "Tempo:" + episode.getTime();
+        }
+
+        return retorno;
+	}
+
 }

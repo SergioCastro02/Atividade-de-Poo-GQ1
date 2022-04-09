@@ -40,13 +40,15 @@ public class Movie extends Video implements Info{
         return true;
     }
 
-    @Override
-    public void mostrarInformacoes() {
-        System.out.printf(" Nome do Filme: " + getName() +"\n"
-        + " Tempo de filme:" + getTime() +"\n"
-         + " Genero do filme:" + getGenre() +"\n" 
-         + " Ano do filme:" + getYear() +"\n"
-         + " Nome pro elenco" + getNameCast() +"\n");        
-    }
+  @Override
+	public String toString() {
+		
+        return "Filme: " + this.name +"\n"
+        + " Tempo de filme:" + this.time +"\n"
+         + " Genero do filme:" + this.genre +"\n" 
+         + " Ano do filme:" + this.year +"\n"
+         + " Nome pro elenco" + this.nameCast +"\n";
+	}
+
     
 }
