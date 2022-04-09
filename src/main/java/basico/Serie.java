@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 public class Serie extends Video implements Info{
 
-    private ArrayList<Episode> episodios;
+    private ArrayList<Episode> episodes;
     private int numEpisode;
 
     public Serie(String name, String genre, int year, String nameCast) {
         super(name, genre, year, nameCast);
-         this.episodios = new ArrayList<Episode>();
+        this.episodes = new ArrayList<Episode>();
     }
 
     public int getNumEpisode() {
@@ -22,7 +22,7 @@ public class Serie extends Video implements Info{
 
     @Override
     public boolean avancar(double valor) {
-        for(Episode episodio : episodios){
+        for(Episode episodio : episodes){
             time = episodio.getTime() + valor;
             episodio.setTime(time);
         }
@@ -31,7 +31,7 @@ public class Serie extends Video implements Info{
 
     @Override
     public boolean voltar(double valor) {
-        for(Episode episodio : episodios){
+        for(Episode episodio : episodes){
             time = episodio.getTime() - valor;
             episodio.setTime(time);
         }
@@ -49,7 +49,7 @@ public class Serie extends Video implements Info{
     public boolean adicionarEpisodio(String name, double time){
         if(name != "" && time != 0){
             Episode episode = new Episode(name, time);
-            if(this.episodios.add(episode)){
+            if(this.episodes.add(episode)){
                 this.numEpisode++;
                 return true;
             }else{
@@ -62,26 +62,27 @@ public class Serie extends Video implements Info{
 
     public boolean removerEpisodio(String name){
         for (Episode episode : this.episodes ) {
-            if(episode.getName().equals(name)){
-                if(this.episodios.remove(episode)){
+            if(episode.getTitulo().equals(name)){
+                if(this.episodes.remove(episode)){
                     this.numEpisode--;
                     return true;
                 }else{
                     return false;
                 }
             }
-        }  
+        }
+        return false;  
     }
     
     @Override
 	public String toString() {
-		String retorno = "Série: " + this.name + "\n, Gênero: " + this.genre +
-			   "\n, Ano: " + this.year + "\n, Nome pro elenco: " + this.nameCast;
+		String retorno = "Série: " + this.name + ",\n Gênero: " + this.genre +
+			   ",\n Ano: " + this.year + ",\n Nome do estúdio: " + this.nameCast;
 
         retorno += "\nEpisódios::";
         for(Episode episode : this.episodes ){
-            retorno += "Título:" + episode.getTitulo() + 
-                        "Tempo:" + episode.getTime();
+            retorno += "\nTítulo:" + episode.getTitulo() + 
+                        "\nTempo:" + episode.getTime() + "\n";
         }
 
         return retorno;

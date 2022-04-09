@@ -1,5 +1,5 @@
 package basico;
-public class Movie extends Video implements Info{
+public class Movie extends Video{
     
     private double time;
 
@@ -47,8 +47,9 @@ public class Movie extends Video implements Info{
         + " Tempo de filme:" + this.time +"\n"
          + " Genero do filme:" + this.genre +"\n" 
          + " Ano do filme:" + this.year +"\n"
-         + " Nome pro elenco" + this.nameCast +"\n";
+         + " Nome do estúdio" + this.nameCast +"\n";
 	}
+
 
     
 }
