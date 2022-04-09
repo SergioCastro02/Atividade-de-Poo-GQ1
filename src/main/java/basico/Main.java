@@ -79,7 +79,7 @@ public class Main {
                     System.out.println("1- Informação do Filme" +"\n"+ "2- Informação da Serie");
                     resposta = s.nextInt();
                     if(resposta == 1){
-                        
+                        //total01
                     }
                     break;
                 case 6:
