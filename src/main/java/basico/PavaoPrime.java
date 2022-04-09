@@ -4,8 +4,11 @@ import java.util.Scanner;
 
 import basico.exception.ExceptionAlreadyPaused;
 import basico.exception.ExceptionAlreadyPlayed;
+import basico.video.Movie;
+import basico.video.Serie;
+import basico.video.Video;
       //banco
-public class PavaoPrime implements VideoInterface{
+public class PavaoPrime implements Info{
     static Scanner sc = new Scanner(System.in);
 
     private ArrayList<Video> midias;
@@ -16,33 +19,15 @@ public class PavaoPrime implements VideoInterface{
 		this.cont = 0;
     }
 
-    public Video buscarFilme(String name){
-        Video retorno=null;
-        for (Video movie : this.midias ) {
-            System.out.println(movie);
-            if(movie.getName().equals(name)){
-                System.out.println("Encontrou!");
-                retorno = movie;
-            }
-        }                 
-        return retorno;
-    }
-
-    public Video buscarSerie(String name){
-        Video retorno=null;
-        for (Video item : this.midias ) {
-            System.out.println(item);
-            if(item.getName().equals(name)){
-                retorno = item;
-            }
-        }                 
-        return retorno;
-    }
-
     public void mostrarInformacoes(){
-        for(Video midia: this.midias){
-			System.out.println(midia.toString());
-		}
+
+        if(this.getVideos() > 0){
+            for(Video midia: this.midias){
+                System.out.println(midia.toString());
+            }
+        }else{
+            System.out.println("Lista de vídeos vazia!!");
+        }    
     }
 
     public Video buscar(String name){
@@ -57,22 +42,31 @@ public class PavaoPrime implements VideoInterface{
 
     public boolean pause(String name) throws ExceptionAlreadyPaused {
         Video busca = buscar(name);
-        if(busca.getPlaying() == true){
-            busca.setPlaying(false);
-            System.out.println("Video pausado...");
-            return true;
+
+        if(busca == null){
+            return false;
+        }else{
+            if(busca.getPlaying() == true){
+                busca.setPlaying(false);
+                return true;
+            }else{
+                throw new ExceptionAlreadyPaused();
+            }
         }
-		throw new ExceptionAlreadyPaused();
 	}
 
     public boolean play(String name) throws ExceptionAlreadyPlayed {
         Video busca = buscar(name);
-        if(busca.getPlaying() == false){
-            busca.setPlaying(true);
-            System.out.println("Video tocando...");
-            return true;
+
+        if(busca == null){
+            return false;
+        }else{
+            if(busca.getPlaying() == false){
+                busca.setPlaying(true);
+                return true;
+            }
+            throw new ExceptionAlreadyPlayed(); 
         }
-		throw new ExceptionAlreadyPlayed();
 	}
 
      public boolean criarFilme(String name, double temp, String genre,int year, String nameCast){

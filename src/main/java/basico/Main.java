@@ -22,56 +22,57 @@ public class Main {
                 case 1:
                     System.out.println("Digite o nome do filme");
                     name = s.next();
-                    //System.out.println("");
-
                     System.out.println("Digite o tempo do filme");
                     time = s.nextDouble();
                     System.out.println("Digite o gênero do filme");
                     genre = s.next();
-                    //System.out.println("");
                     System.out.println("Digite o ano do filme");
                     year = s.nextInt();
                     System.out.println("Digite o nome do estúdio");
                     nameCast = s.next();
-                    //System.out.println("");
-                    tela01.criarFilme(name, time, genre, year, nameCast);
+
+                    if(tela01.criarFilme(name, time, genre, year, nameCast)) System.out.println("Filme criado com sucesso!");
+                    else System.out.println("Não foi possível criar o filme."); 
+                    
                     break;
                 case 2:
                     System.out.println("Digite o nome da série");
                     name = s.next();
-                    //System.out.println("");
                     System.out.println("Digite o tempo da série");
                     time = s.nextDouble();
                     System.out.println("Digite o gênero da série");
                     genre = s.next();
-                    //System.out.println("");
                     System.out.println("Digite o ano da série");
                     year = s.nextInt();
                     System.out.println("Digite o nome do estúdio");
                     nameCast = s.next();
-                    //System.out.println("");
-                    tela01.criarSerie(name, genre, year, nameCast);
+
+                    if(tela01.criarSerie(name, genre, year, nameCast)) System.out.println("Série criada com sucesso!");
+                    else System.out.println("Não foi possível criar a série."); 
+
                     break;
                 case 3:
                     System.out.println("Digite o nome do Video");
                     name = s.next();
-                    //System.out.println("");
-                    tela01.pause(name);                
+
+                    if(tela01.pause(name)) System.out.println("Video pausado...");
+                    else System.out.println("Não foi possível pausar o vídeo.");              
                     break;
                  case 4:                        
                     System.out.println("Digite o nome do Video");
                     name = s.next();
-                    //System.out.println("");
-                    tela01.play(name);                
+
+                    if(tela01.play(name)) System.out.println("Video tocando...");
+                    else System.out.println("Não foi possível tocar o vídeo.");                               
                     break;
                 case 5:
                     tela01.mostrarInformacoes();
                     break;
                 case 6:
-                    System.out.println("Código encerrado!");
+                    System.out.println("Programa encerrado!");
                     break;
                 default:
-                    System.out.println("Opcão errada!");
+                    System.out.println("Opcão inválida!");
             }  
 
         }while(escolha != 6);

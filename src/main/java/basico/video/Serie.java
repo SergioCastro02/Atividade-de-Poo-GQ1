@@ -1,8 +1,8 @@
-package basico;
+package basico.video;
 //poupança (filha de conta)
 import java.util.ArrayList;
 
-public class Serie extends Video implements Info{
+public class Serie extends Video{
 
     private ArrayList<Episode> episodes;
     private int numEpisode;
@@ -37,14 +37,6 @@ public class Serie extends Video implements Info{
         }
         return true;
     }
-
-    @Override
-    public void mostrarInformacoes() {
-        System.out.printf(" Nome do Filme: " + getName() +"\n"
-         + " Genero do filme:" + getGenre() +"\n" 
-         + " Ano do filme:" + getYear() +"\n"
-         + " Nome pro elenco" + getNameCast() +"\n");        
-    }
     
     public boolean adicionarEpisodio(String name, double time){
         if(name != "" && time != 0){
@@ -77,9 +69,9 @@ public class Serie extends Video implements Info{
     @Override
 	public String toString() {
 		String retorno = "Série: " + this.name + ",\n Gênero: " + this.genre +
-			   ",\n Ano: " + this.year + ",\n Nome do estúdio: " + this.nameCast;
+			   "\n Ano: " + this.year + ",\n Nome do estúdio: " + this.nameCast;
 
-        retorno += "\nEpisódios::";
+        retorno += "\nEpisódios:";
         for(Episode episode : this.episodes ){
             retorno += "\nTítulo:" + episode.getTitulo() + 
                         "\nTempo:" + episode.getTime() + "\n";

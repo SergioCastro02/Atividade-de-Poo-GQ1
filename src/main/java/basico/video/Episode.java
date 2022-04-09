@@ -1,11 +1,11 @@
-package basico;
+package basico.video;
 
-public class Episodio {
+public class Episode {
 
     private String titulo;    
     private double time;
 
-    public Episodio(String titulo, double time) {
+    public Episode(String titulo, double time) {
         this.titulo = titulo;
         this.time = time;
     }

@@ -1,4 +1,4 @@
-package basico;
+package basico.video;
 //conta geral
 public abstract class Video {
 

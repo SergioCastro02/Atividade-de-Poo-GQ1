@@ -1,4 +1,5 @@
-package basico;
+package basico.video;
+
 public class Movie extends Video{
     
     private double time;
