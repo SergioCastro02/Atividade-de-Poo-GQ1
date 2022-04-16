@@ -1,4 +1,5 @@
 package basico.video;
+import basico.exception.VideoNotInitializedException;
 
 public class Movie extends Video{
     
@@ -12,14 +13,6 @@ public class Movie extends Video{
         this.year = year;
         this.nameCast = nameCast;
     }
-
-    public Movie(String name, String genre, int year, String nameCast) {
-        super(name, genre, year, nameCast);
-        this.name = name;
-        this.genre = genre;
-        this.year = year;
-        this.nameCast = nameCast;
-    }
     
     public double getTime() {
         return time;
@@ -29,17 +22,6 @@ public class Movie extends Video{
         this.time = time;
     }
 
-    @Override
-    public boolean voltar(double valor) {
-        this.time =- valor;    
-        return true;
-    }
-     
-    @Override
-    public boolean avancar(double valor) {
-        this.time =+ valor;        
-        return true;
-    }
 
   @Override
 	public String toString() {
@@ -52,5 +34,23 @@ public class Movie extends Video{
 	}
 
 
-    
+    @Override
+    public boolean pass() throws VideoNotInitializedException {
+        if(this.time > 0){
+            this.time =+ 15.0;
+            return true;
+        }else{
+            throw new VideoNotInitializedException();
+        }
+    }
+
+    @Override
+    public boolean back() throws VideoNotInitializedException {
+        if(this.time > 0){
+            this.time =- 15.0;
+            return true;
+        }else{
+            throw new VideoNotInitializedException();
+        }
+    }
 }

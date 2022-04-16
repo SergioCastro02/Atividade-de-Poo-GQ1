@@ -1,13 +1,13 @@
 package basico;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import basico.exception.ExceptionAlreadyPaused;
-import basico.exception.ExceptionAlreadyPlayed;
+import basico.exception.VideoAlreadyPausedException;
+import basico.exception.VideoAlreadyPlayingException;
+import basico.exception.VideoNotInitializedException;
 import basico.video.Movie;
 import basico.video.Serie;
 import basico.video.Video;
-      //banco
+
 public class PavaoPrime implements Info{
     static Scanner sc = new Scanner(System.in);
 
@@ -40,7 +40,7 @@ public class PavaoPrime implements Info{
         return retorno;
     }
 
-    public boolean pause(String name) throws ExceptionAlreadyPaused {
+    public boolean pause(String name) throws VideoAlreadyPausedException {
         Video busca = buscar(name);
 
         if(busca == null){
@@ -50,26 +50,26 @@ public class PavaoPrime implements Info{
                 busca.setPlaying(false);
                 return true;
             }else{
-                throw new ExceptionAlreadyPaused();
+                throw new VideoAlreadyPausedException();
             }
         }
 	}
 
-    public boolean play(String name) throws ExceptionAlreadyPlayed {
+    public boolean play(String name) throws VideoAlreadyPlayingException {
         Video busca = buscar(name);
 
-        if(busca == null){
+        if (busca == null) {
             return false;
-        }else{
-            if(busca.getPlaying() == false){
+        } else {
+            if (busca.getPlaying() == false) {
                 busca.setPlaying(true);
                 return true;
             }
-            throw new ExceptionAlreadyPlayed(); 
+            throw new VideoAlreadyPlayingException();
         }
-	}
+    }
 
-     public boolean criarFilme(String name, double temp, String genre,int year, String nameCast){
+     public boolean criarFilme(String name, double temp, String genre,int year, String nameCast) throws VideoNotInitializedException {
         if(name != "" && temp != 0 && year != 0 && nameCast != "" && genre != ""){
             Video movie = new Movie(name, temp, genre, year, nameCast);
             this.midias.add(movie);
@@ -80,7 +80,7 @@ public class PavaoPrime implements Info{
         }
     }
 
-    public boolean criarSerie(String name, String genre,int year, String nameCast) {
+    public boolean criarSerie(String name, String genre,int year, String nameCast) throws VideoNotInitializedException{
         if(name != "" && year != 0 && nameCast != "" && genre != ""){
             Video serie = new Serie(name, genre, year, nameCast);
             Serie serieCast = (Serie) serie;

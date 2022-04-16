@@ -1,6 +1,7 @@
 package basico.video;
-//conta geral
-public abstract class Video {
+import basico.Player;
+
+public abstract class Video implements Player {
 
     protected String name;
     protected String genre;
@@ -16,9 +17,9 @@ public abstract class Video {
         this.nameCast = nameCast;
     }
 
-    public abstract boolean avancar(double valor);
-    
-    public abstract boolean voltar(double valor);
+    public Video (String name) {
+        this.name = name;
+    }
 
     public String getName() {
         return name;
