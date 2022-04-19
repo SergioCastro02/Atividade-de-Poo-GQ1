@@ -3,12 +3,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import basico.exception.VideoAlreadyPausedException;
 import basico.exception.VideoAlreadyPlayingException;
+import basico.exception.VideoNotFoundException;
 import basico.exception.VideoNotInitializedException;
-import basico.video.Movie;
-import basico.video.Serie;
-import basico.video.Video;
+import basico.video.*;
 
-public class PavaoPrime implements Info{
+public class PavaoPrime implements GetVideo {
     static Scanner sc = new Scanner(System.in);
 
     private ArrayList<Video> midias;
@@ -19,18 +18,45 @@ public class PavaoPrime implements Info{
 		this.cont = 0;
     }
 
-    public void mostrarInformacoes(){
-
+    public void showInformationsVideo(){
         if(this.getVideos() > 0){
             for(Video midia: this.midias){
-                System.out.println(midia.toString());
+                if(midia instanceof Movie){
+                    ((Movie) midia).showInformations();
+                }else if(midia instanceof Serie){
+                    ((Serie) midia).showInformations();
+                }
             }
         }else{
             System.out.println("Lista de vídeos vazia!!");
-        }    
+        }
     }
 
-    public Video buscar(String name){
+    public void showInformationsVideoSpecified(String name) {
+        Video found = find(name);
+        if(found == null){
+            System.out.println("Vídeo não encontrado");
+        }else{
+            if(found instanceof Movie){
+                System.out.println( "Filme: " + found.getName() +"\n"
+                        + " Genero do filme:" + found.getGenre() +"\n"
+                        + " Ano do filme:" + found.getYear() +"\n"
+                        + " Nome do estúdio" + found.getNameCast() +"\n");
+            }else if(found instanceof Serie){
+                String retorno = "Série: " + found.getName() + ",\n Gênero: " + found.getGenre() +
+                        "\n Ano: " + found.getYear() + ",\n Nome do estúdio: " + found.getNameCast();
+
+                retorno += "\nEpisódios:";
+                for(Episode episode : ((Serie) found).getEpisodes()){
+                    retorno += "\nTítulo:" + episode.getTitulo() +
+                            "\nTempo:" + episode.getTime() + "\n";
+                }
+                System.out.println(retorno);
+            }
+        }
+    }
+
+    public Video find(String name){
         Video retorno = null;
         for(Video midia: this.midias){
 			if (midia.getName().equals(name)){
@@ -40,36 +66,36 @@ public class PavaoPrime implements Info{
         return retorno;
     }
 
-    public boolean pause(String name) throws VideoAlreadyPausedException {
-        Video busca = buscar(name);
+    public boolean pause(String name) throws VideoAlreadyPausedException, VideoNotFoundException {
+        Video found = find(name);
 
-        if(busca == null){
-            return false;
+        if(found == null){
+            throw new VideoNotFoundException("Vídeo não encontrado...");
         }else{
-            if(busca.getPlaying() == true){
-                busca.setPlaying(false);
+            if(found.getPlaying() == true){
+                found.setPlaying(false);
                 return true;
             }else{
-                throw new VideoAlreadyPausedException();
+                throw new VideoAlreadyPausedException("Vídeo já está tocando...");
             }
         }
 	}
 
-    public boolean play(String name) throws VideoAlreadyPlayingException {
-        Video busca = buscar(name);
+    public boolean play(String name) throws VideoAlreadyPlayingException, VideoNotFoundException {
+        Video busca = find(name);
 
         if (busca == null) {
-            return false;
+            throw new VideoNotFoundException("Vídeo não encontrado...");
         } else {
             if (busca.getPlaying() == false) {
                 busca.setPlaying(true);
                 return true;
             }
-            throw new VideoAlreadyPlayingException();
         }
+        throw new VideoAlreadyPlayingException("O vídeo já está tocando!");
     }
 
-     public boolean criarFilme(String name, double temp, String genre,int year, String nameCast) throws VideoNotInitializedException {
+     public boolean createMovie(String name, double temp, String genre,int year, String nameCast) {
         if(name != "" && temp != 0 && year != 0 && nameCast != "" && genre != ""){
             Video movie = new Movie(name, temp, genre, year, nameCast);
             this.midias.add(movie);
@@ -80,7 +106,7 @@ public class PavaoPrime implements Info{
         }
     }
 
-    public boolean criarSerie(String name, String genre,int year, String nameCast) throws VideoNotInitializedException{
+    public boolean createSerie(String name, String genre,int year, String nameCast){
         if(name != "" && year != 0 && nameCast != "" && genre != ""){
             Video serie = new Serie(name, genre, year, nameCast);
             Serie serieCast = (Serie) serie;
@@ -92,9 +118,8 @@ public class PavaoPrime implements Info{
                 String nameEp = sc.next();
                 System.out.println("Digite o tempo do episódio::");
                 double temp = sc.nextDouble();
-                serieCast.adicionarEpisodio(nameEp, temp);
+                serieCast.addEpisode(nameEp, temp);
             }
-
             this.midias.add(serie);
             this.cont++;
             return true;

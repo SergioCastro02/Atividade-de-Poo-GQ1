@@ -1,7 +1,8 @@
 package basico.video;
+
 import basico.exception.VideoNotInitializedException;
 
-public class Movie extends Video{
+public class Movie extends Video implements Information {
     
     private double time;
 
@@ -24,33 +25,12 @@ public class Movie extends Video{
 
 
   @Override
-	public String toString() {
-		
-        return "Filme: " + this.name +"\n"
-        + " Tempo de filme:" + this.time +"\n"
-         + " Genero do filme:" + this.genre +"\n" 
-         + " Ano do filme:" + this.year +"\n"
-         + " Nome do estúdio" + this.nameCast +"\n";
+	public void showInformations() {
+      System.out.println( "Filme: " + this.name +"\n"
+              + " Tempo de filme:" + this.time +"\n"
+              + " Genero do filme:" + this.genre +"\n"
+              + " Ano do filme:" + this.year +"\n"
+              + " Nome do estúdio" + this.nameCast +"\n");
+
 	}
-
-
-    @Override
-    public boolean pass() throws VideoNotInitializedException {
-        if(this.time > 0){
-            this.time =+ 15.0;
-            return true;
-        }else{
-            throw new VideoNotInitializedException();
-        }
-    }
-
-    @Override
-    public boolean back() throws VideoNotInitializedException {
-        if(this.time > 0){
-            this.time =- 15.0;
-            return true;
-        }else{
-            throw new VideoNotInitializedException();
-        }
-    }
 }

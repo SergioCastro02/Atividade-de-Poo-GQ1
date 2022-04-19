@@ -29,24 +29,4 @@ public class Episode extends Video{
         this.titulo = titulo;
     }
 
-    @Override
-    public boolean pass() throws VideoNotInitializedException {
-        if(this.time > 0){
-            this.time =+ 15.0;
-            return true;
-        }else{
-            throw new VideoNotInitializedException();
-        }
-    }
-
-    @Override
-    public boolean back() throws VideoNotInitializedException {
-        if(this.time > 0){
-            this.time =- 15.0;
-            return true;
-        }else{
-            throw new VideoNotInitializedException();
-        }
-    }
-
 }

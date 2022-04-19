@@ -1,21 +1,21 @@
 package basico;
 import basico.exception.VideoAlreadyPausedException;
 import basico.exception.VideoAlreadyPlayingException;
+import basico.exception.VideoNotFoundException;
 import basico.exception.VideoNotInitializedException;
+
 import java.util.Scanner;
 
-public class MainMovie extends Main{
+public class MainMovie extends Main {
 
     static Scanner in = new Scanner(System.in);
     static PavaoPrime tela01 = new PavaoPrime();
-    double time;
-    int year;
 
     public static void menuMovie() throws VideoAlreadyPausedException, VideoAlreadyPlayingException, VideoAlreadyPausedException {
         System.out.println("1- Criar filme.");
         System.out.println("2- Dar play no filme.");
         System.out.println("3- Pausar filme.");
-        System.out.println("4- Avançar 15s no filme.");
+        System.out.println("4- Mostrar informações sobre todos os nossos filmes.");
         System.out.println("5- Mostrar informações sobre determinado filme.");
         System.out.println("0- Encerrar o programa.");
 
@@ -23,7 +23,6 @@ public class MainMovie extends Main{
 
         switch(escolha){
                 case 1://criar filme
-                    try{
                         System.out.println("Digite o nome do filme");
                         String name = s.next();
                         System.out.println("Digite o tempo do filme");
@@ -35,53 +34,44 @@ public class MainMovie extends Main{
                         System.out.println("Digite o nome do estúdio");
                         String nameCast = s.next();
 
-                        tela01.criarFilme(name, time, genre, year, nameCast);
+                        tela01.createMovie(name, time, genre, year, nameCast);
 
-                    }catch (VideoNotInitializedException videoNotInitializedException){
-                        System.out.println(videoNotInitializedException.getMessage());
-                    }finally {
-                        System.out.println("Filme criado com sucesso!");
-                    }
+                        System.out.println("Operação realizada.");
+
                     break;
 
                 case 2://play filme
+
                     try{
                         System.out.println("Digite o nome do Video");
-                        String name = s.next();
+                        name = s.next();
                         tela01.play(name);
-                    }catch(VideoAlreadyPlayingException videoAlreadyPlayingException){
+                    }catch(VideoAlreadyPlayingException | VideoNotFoundException videoAlreadyPlayingException){
                         videoAlreadyPlayingException.getMessage();
                     }finally{
-                        System.out.println("Filme tocando...");
+                        System.out.println("Operação realizada.");
                     }
                     break;
 
                 case 3://pausar filme
                     try{
                         System.out.println("Digite o nome do Video");
-                        String name = s.next();
+                        name = s.next();
                         tela01.pause(name);
-                    }catch(VideoAlreadyPausedException videoAlreadyPausedException){
+                    }catch(VideoAlreadyPausedException | VideoNotFoundException videoAlreadyPausedException){
                         videoAlreadyPausedException.getMessage();
                     }finally{
-                        System.out.println("Filme pausado.");
+                        System.out.println("Operação realizada.");
                     }
                     break;
-
-                case 4://avançar filme
-                    /* à ser implementado
-                    try{
-
-                    }catch(){
-
-                    }finally{
-                    }
-                     */
-                    break;
-
-                case 5:
+                case 4:
                     System.out.println("Exibindo informações sobre nossos filmes do catálogo:");
-                    tela01.mostrarInformacoes();
+                    tela01.showInformationsVideo();
+                    break;
+                case 5:
+                    System.out.println("Digite o nome do Filme:");
+                    name = s.next();
+                    tela01.showInformationsVideoSpecified(name);
                     break;
 
                 case 0:

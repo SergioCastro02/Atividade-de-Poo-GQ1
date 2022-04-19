@@ -1,7 +1,7 @@
 package basico.exception;
 
 public class VideoAlreadyPausedException extends Exception{
-    public VideoAlreadyPausedException(){
-        super("O vídeo já está pausado!");
+    public VideoAlreadyPausedException(String string) {
+        System.out.println(string);
     }
 }

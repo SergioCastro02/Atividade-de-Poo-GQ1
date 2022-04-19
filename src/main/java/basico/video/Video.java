@@ -1,7 +1,6 @@
 package basico.video;
-import basico.Player;
 
-public abstract class Video implements Player {
+public abstract class Video {
 
     protected String name;
     protected String genre;
