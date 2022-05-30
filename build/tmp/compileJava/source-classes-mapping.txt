@@ -1,23 +1,25 @@
-basico/Info.java
- basico.Info
-basico/exception/VideoAlreadyPlayingException.java
- basico.exception.VideoAlreadyPlayingException
-basico/video/Video.java
- basico.video.Video
 basico/video/Movie.java
  basico.video.Movie
-basico/Player.java
- basico.Player
-basico/exception/VideoFinishException.java
- basico.exception.VideoFinishException
-basico/video/Episode.java
- basico.video.Episode
+basico/video/Video.java
+ basico.video.Video
 basico/exception/VideoAlreadyPausedException.java
  basico.exception.VideoAlreadyPausedException
+basico/video/Episode.java
+ basico.video.Episode
 basico/exception/VideoNotInitializedException.java
  basico.exception.VideoNotInitializedException
+basico/video/Information.java
+ basico.video.Information
 basico/video/Serie.java
  basico.video.Serie
+basico/video/GetVideo.java
+ basico.video.GetVideo
+basico/exception/VideoFinishException.java
+ basico.exception.VideoFinishException
+basico/exception/VideoAlreadyPlayingException.java
+ basico.exception.VideoAlreadyPlayingException
+basico/exception/VideoNotFoundException.java
+ basico.exception.VideoNotFoundException
 basico/MainMovie.java
  basico.MainMovie
 basico/PavaoPrime.java
