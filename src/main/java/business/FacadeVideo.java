@@ -7,7 +7,7 @@ import business.exceptions.VideoNotFoundException;
 import business.interfaces.IFacadeVideo;
 
 public class FacadeVideo implements IFacadeVideo {
-    private ControllerVideo controllerVideo;
+    private ControllerVideo controllerVideo = new ControllerVideo();
 
     @Override
     public boolean createMovie(String name, double temp, String genre, int year, String nameCast) {
