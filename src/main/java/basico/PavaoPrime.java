@@ -1,11 +1,9 @@
 package basico;
 import java.util.ArrayList;
 import java.util.Scanner;
-import basico.exception.VideoAlreadyPausedException;
-import basico.exception.VideoAlreadyPlayingException;
-import basico.exception.VideoNotFoundException;
-import basico.exception.VideoNotInitializedException;
-import basico.video.*;
+
+import business.entity.Video;
+import business.interfaces.GetVideo;
 
 public class PavaoPrime implements GetVideo {
     static Scanner sc = new Scanner(System.in);

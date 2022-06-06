@@ -1,4 +1,4 @@
-package basico.exception;
+package business.exceptions;
 
 public class VideoAlreadyPlayingException extends Exception{
     public VideoAlreadyPlayingException(String string){

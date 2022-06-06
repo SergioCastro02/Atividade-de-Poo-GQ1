@@ -1,4 +1,4 @@
-package basico.exception;
+package business.exceptions;
 
 public class VideoNotFoundException extends Exception {
     public VideoNotFoundException(String string) {

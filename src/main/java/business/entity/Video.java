@@ -1,4 +1,4 @@
-package basico.video;
+package business.entity;
 
 public abstract class Video {
 

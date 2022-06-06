@@ -1,4 +1,4 @@
-package basico.exception;
+package business.exceptions;
 
 public class VideoFinishException extends Exception{
     public VideoFinishException(){

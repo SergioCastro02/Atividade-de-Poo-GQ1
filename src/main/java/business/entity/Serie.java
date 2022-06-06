@@ -1,6 +1,6 @@
-package basico.video;
+package business.entity;
 
-import basico.exception.VideoNotInitializedException;
+import business.interfaces.Information;
 
 import java.util.ArrayList;
 

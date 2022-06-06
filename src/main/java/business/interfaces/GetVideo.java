@@ -1,4 +1,4 @@
-package basico.video;
+package business.interfaces;
 
 public interface GetVideo {
     public int getVideos();

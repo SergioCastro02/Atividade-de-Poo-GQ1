@@ -1,13 +1,15 @@
 package gui;
 import java.util.Scanner;
-import basico.exception.VideoAlreadyPausedException;
-import basico.exception.VideoAlreadyPlayingException;
-import gui.Menu;
+
+import business.exceptions.VideoAlreadyPausedException;
+import business.exceptions.VideoAlreadyPlayingException;
+import business.interfaces.IFacadeVideo;
+import business.FacadeVideo;
 
 public class Main {       
     
     static Scanner s = new Scanner(System.in);
-    public static void main(String[] args) throws VideoAlreadyPlayingException, VideoAlreadyPausedException {
+    public static void main(String[] args) throws VideoAlreadyPlayingException, VideoAlreadyPausedException, VideoAlreadyPausedException, VideoAlreadyPausedException {
         int escolha = 0;
 
         do {
@@ -16,6 +18,8 @@ public class Main {
             System.out.println("Bem vindo(a)! Deseja navegar entre séries ou filmes?");
             System.out.println("1- Séries | 2-Filmes | 0-Sair do Programa");
             escolha = s.nextInt();
+
+            IFacadeVideo facadeVideo = new FacadeVideo();
 
             switch(escolha){
                 case 1://Séries

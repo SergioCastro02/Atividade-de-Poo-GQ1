@@ -1,18 +1,18 @@
 package gui.serie;
 import basico.PavaoPrime;
-import basico.exception.VideoAlreadyPausedException;
-import basico.exception.VideoAlreadyPlayingException;
-import basico.exception.VideoNotFoundException;
-import basico.exception.VideoNotInitializedException;
-import data.video.RepositorioVideo;
+import business.exceptions.VideoAlreadyPausedException;
+import business.exceptions.VideoAlreadyPlayingException;
+import business.exceptions.VideoNotFoundException;
+import business.FacadeVideo;
 import gui.Main;
 
 import java.util.Scanner;
 
 public class GUISerie extends Main {
+
     static Scanner s = new Scanner(System.in);
     static PavaoPrime tela01 = new PavaoPrime();
-    static RepositorioVideo repositorioVideo;
+    static FacadeVideo facadeVideo = new FacadeVideo();
 
     public static void menuSerie(){
         System.out.println("1- Criar série.");
@@ -35,7 +35,7 @@ public class GUISerie extends Main {
                     System.out.println("Digite o nome do estúdio:");
                     String nameCast = s.next();
 
-                    repositorioVideo.createSerie(name, genre, year, nameCast);
+                    facadeVideo.createSerie(name, genre, year, nameCast);
 
                     System.out.println("Operação realizada.");
                 break;
@@ -44,7 +44,7 @@ public class GUISerie extends Main {
                 try{
                     System.out.println("Digite o nome da série:");
                     name = s.next();
-                    repositorioVideo.play(name);
+                    facadeVideo.play(name);
                 }catch(VideoAlreadyPlayingException | VideoNotFoundException videoAlreadyPlayingException){
                     videoAlreadyPlayingException.getMessage();
                 }finally{
@@ -56,7 +56,7 @@ public class GUISerie extends Main {
                 try{
                     System.out.println("Digite o nome da série:");
                     name = s.next();
-                    repositorioVideo.pause(name);
+                    facadeVideo.pause(name);
                 }catch(VideoAlreadyPausedException | VideoNotFoundException videoAlreadyPausedException){
                     videoAlreadyPausedException.getMessage();
                 }finally{
@@ -66,12 +66,12 @@ public class GUISerie extends Main {
             case 4:
                 System.out.println("Exibindo informações sobre nossas séries do catálogo:");
 
-                repositorioVideo.showInformationsVideo();
+                facadeVideo.showInformationsVideo();
                 break;
             case 5:
                 System.out.println("Digite o nome da série:");
                 name = s.next();
-                repositorioVideo.showInformationsVideoSpecified(name);
+                facadeVideo.showInformationsVideoSpecified(name);
                 break;
             case 0:
                 System.out.println("Bye bye!!");

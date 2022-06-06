@@ -1,4 +1,4 @@
-package basico.exception;
+package business.exceptions;
 
 public class VideoAlreadyPausedException extends Exception{
     public VideoAlreadyPausedException(String string) {

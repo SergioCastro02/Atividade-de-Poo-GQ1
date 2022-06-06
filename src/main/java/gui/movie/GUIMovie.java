@@ -1,10 +1,9 @@
 package gui.movie;
-import data.video.RepositorioVideo;
+import business.FacadeVideo;
 import gui.Main;
 import basico.PavaoPrime;
-import basico.exception.VideoAlreadyPausedException;
-import basico.exception.VideoAlreadyPlayingException;
-import basico.exception.VideoNotFoundException;
+import business.exceptions.*;
+import business.exceptions.VideoNotFoundException;
 
 import java.util.Scanner;
 
@@ -12,7 +11,7 @@ public class GUIMovie extends Main {
 
     static Scanner s = new Scanner(System.in);
     static PavaoPrime tela01 = new PavaoPrime();
-    static RepositorioVideo repositorioVideo;
+    static FacadeVideo facadeVideo = new FacadeVideo();
 
     public static void menuMovie() throws VideoAlreadyPausedException, VideoAlreadyPlayingException, VideoAlreadyPausedException {
         System.out.println("1- Criar filme.");
@@ -37,7 +36,7 @@ public class GUIMovie extends Main {
                         System.out.println("Digite o nome do estúdio");
                         String nameCast = s.next();
 
-                        repositorioVideo.createMovie(name, time, genre, year, nameCast);
+                        facadeVideo.createMovie(name, time, genre, year, nameCast);
 
                         System.out.println("Operação realizada.");
 
@@ -48,8 +47,8 @@ public class GUIMovie extends Main {
                     try{
                         System.out.println("Digite o nome do Video");
                         name = s.next();
-                        repositorioVideo.play(name);
-                    }catch(VideoAlreadyPlayingException | VideoNotFoundException videoAlreadyPlayingException){
+                        facadeVideo.play(name);
+                    }catch(VideoNotFoundException videoAlreadyPlayingException){
                         videoAlreadyPlayingException.getMessage();
                     }finally{
                         System.out.println("Operação realizada.");
@@ -60,7 +59,7 @@ public class GUIMovie extends Main {
                     try{
                         System.out.println("Digite o nome do Video");
                         name = s.next();
-                        repositorioVideo.pause(name);
+                        facadeVideo.pause(name);
                     }catch(VideoAlreadyPausedException | VideoNotFoundException videoAlreadyPausedException){
                         videoAlreadyPausedException.getMessage();
                     }finally{
@@ -69,12 +68,12 @@ public class GUIMovie extends Main {
                     break;
                 case 4:
                     System.out.println("Exibindo informações sobre nossos filmes do catálogo:");
-                    repositorioVideo.showInformationsVideo();
+                    facadeVideo.showInformationsVideo();
                     break;
                 case 5:
                     System.out.println("Digite o nome do Filme:");
                     name = s.next();
-                    repositorioVideo.showInformationsVideoSpecified(name);
+                    facadeVideo.showInformationsVideoSpecified(name);
                     break;
 
                 case 0:

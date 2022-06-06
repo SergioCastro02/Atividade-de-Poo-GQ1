@@ -1,8 +1,9 @@
 //Singleton
 package gui;
 
-import basico.exception.VideoAlreadyPausedException;
-import basico.exception.VideoAlreadyPlayingException;
+import business.exceptions.VideoAlreadyPausedException;
+import business.exceptions.VideoAlreadyPausedException;
+import business.exceptions.VideoAlreadyPlayingException;
 import gui.movie.GUIMovie;
 import gui.serie.GUISerie;
 
@@ -25,12 +26,11 @@ public class Menu{
         return menu;
     }
 
-    public static void exibirMenuSerie() throws VideoAlreadyPlayingException, VideoAlreadyPausedException {
-        guiMovie.menuMovie();
-    }
-
-    public static void exibirMenuMovie(){
+    public static void exibirMenuSerie(){
         guiSerie.menuSerie();
     }
 
+    public static void exibirMenuMovie() throws VideoAlreadyPausedException, VideoAlreadyPlayingException {
+        guiMovie.menuMovie();
+    }
 }

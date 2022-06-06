@@ -1,4 +1,4 @@
-package basico.video;
+package business.interfaces;
 
 public interface Information {
     

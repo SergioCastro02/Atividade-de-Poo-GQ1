@@ -1,12 +1,12 @@
 package data;
 
-import basico.exception.VideoAlreadyPausedException;
-import basico.exception.VideoAlreadyPlayingException;
-import basico.exception.VideoNotFoundException;
-import basico.video.GetVideo;
-import basico.video.Video;
+import business.entity.Video;
+import business.exceptions.VideoAlreadyPausedException;
+import business.exceptions.VideoAlreadyPlayingException;
+import business.exceptions.VideoNotFoundException;
+import business.interfaces.GetVideo;
 
-public interface IRepositorioVideo extends GetVideo {
+public interface IRepositoryVideo extends GetVideo {
 
     boolean createMovie(String name, double temp, String genre,int year, String nameCast);
 
@@ -18,7 +18,7 @@ public interface IRepositorioVideo extends GetVideo {
 
     Video find(String name);
 
-    boolean pause(String name) throws VideoAlreadyPausedException, VideoNotFoundException;
+    boolean pause(String name) throws VideoNotFoundException, VideoAlreadyPausedException;
 
     boolean play(String name) throws VideoAlreadyPlayingException, VideoNotFoundException;
 

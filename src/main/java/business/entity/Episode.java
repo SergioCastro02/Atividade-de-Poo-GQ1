@@ -1,8 +1,6 @@
-package basico.video;
+package business.entity;
 
-import basico.exception.VideoNotInitializedException;
-
-public class Episode extends Video{
+public class Episode extends Video {
 
     private String titulo;    
     private double time;

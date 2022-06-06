@@ -1,24 +1,25 @@
 package data.video;
 
-import basico.exception.VideoAlreadyPausedException;
-import basico.exception.VideoAlreadyPlayingException;
-import basico.exception.VideoNotFoundException;
-import basico.video.Episode;
-import basico.video.Movie;
-import basico.video.Serie;
-import basico.video.Video;
-import data.IRepositorioVideo;
+import business.entity.Episode;
+import business.interfaces.GetVideo;
+import business.entity.Movie;
+import business.entity.Serie;
+import business.exceptions.VideoNotFoundException;
+import business.exceptions.VideoAlreadyPausedException;
+import business.exceptions.VideoAlreadyPlayingException;
+import data.IRepositoryVideo;
+import business.entity.Video;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class RepositorioVideo implements IRepositorioVideo {
+public class RepositoryVideo implements IRepositoryVideo, GetVideo {
     static Scanner sc = new Scanner(System.in);
 
     private ArrayList<Video> midias;
     private int cont = 0;
 
-    public RepositorioVideo(){
+    public RepositoryVideo(){
         this.midias = new ArrayList<>();
     }
 

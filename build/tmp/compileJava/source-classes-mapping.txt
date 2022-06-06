@@ -1,30 +1,36 @@
-basico/video/Movie.java
- basico.video.Movie
-basico/video/Video.java
- basico.video.Video
-basico/exception/VideoAlreadyPausedException.java
- basico.exception.VideoAlreadyPausedException
-basico/video/Episode.java
- basico.video.Episode
-basico/exception/VideoNotInitializedException.java
- basico.exception.VideoNotInitializedException
-basico/video/Information.java
- basico.video.Information
-basico/video/Serie.java
- basico.video.Serie
-basico/video/GetVideo.java
- basico.video.GetVideo
-basico/exception/VideoFinishException.java
- basico.exception.VideoFinishException
-basico/exception/VideoAlreadyPlayingException.java
- basico.exception.VideoAlreadyPlayingException
-basico/exception/VideoNotFoundException.java
- basico.exception.VideoNotFoundException
-basico/MainMovie.java
- basico.MainMovie
+data/IRepositorioVideo.java
+ data.IRepositorioVideo
 basico/PavaoPrime.java
  basico.PavaoPrime
-basico/MainSerie.java
- basico.MainSerie
-basico/Main.java
- basico.Main
+basico/video/Episode.java
+ basico.video.Episode
+gui/serie/GUISerie.java
+ gui.serie.GUISerie
+basico/video/Information.java
+ basico.video.Information
+business/exceptions/VideoAlreadyPlayingException.java
+ business.exceptions.VideoAlreadyPlayingException
+business/exceptions/VideoFinishException.java
+ business.exceptions.VideoFinishException
+business/exceptions/VideoNotFoundException.java
+ business.exceptions.VideoNotFoundException
+basico/video/GetVideo.java
+ basico.video.GetVideo
+business/exceptions/VideoNotInitializedException.java
+ business.exceptions.VideoNotInitializedException
+business/video/entidade/Video.java
+ business.video.entidade.Video
+business/serie/entidade/Serie.java
+ business.serie.entidade.Serie
+business/exceptions/VideoAlreadyPausedException.java
+ business.exceptions.VideoAlreadyPausedException
+data/video/RepositorioVideo.java
+ data.video.RepositorioVideo
+gui/Main.java
+ gui.Main
+gui/Menu.java
+ gui.Menu
+business/movie/entidade/Movie.java
+ business.movie.entidade.Movie
+gui/movie/GUIMovie.java
+ gui.movie.GUIMovie
