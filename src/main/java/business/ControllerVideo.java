@@ -1,9 +1,8 @@
 package business;
-
+import business.entity.Video;
 import business.exceptions.VideoAlreadyPausedException;
 import business.exceptions.VideoAlreadyPlayingException;
 import business.exceptions.VideoNotFoundException;
-import business.entity.Video;
 import data.video.RepositoryVideo;
 
 public class ControllerVideo {
@@ -15,7 +14,7 @@ public class ControllerVideo {
     }
 
     public boolean createMovie(String name, double temp, String genre, int year, String nameCast){
-        return this.createMovie(name, temp, genre, year, nameCast);
+        return this.repositoryVideo.createMovie(name, temp, genre, year, nameCast);
     }
 
     public void showInformationsVideoSpecified(String name){
