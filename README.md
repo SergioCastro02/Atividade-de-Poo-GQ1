@@ -34,11 +34,13 @@ Students:
 
 ## :hammer: Funcionalidades do projeto
 
-- `Funcionalidade 1`: descrição da funcionalidade 1
-- `Funcionalidade 2`: descrição da funcionalidade 2
-- `Funcionalidade 2a`: descrição da funcionalidade 2a relacionada à funcionalidade 2
-- `Funcionalidade 3`: descrição da funcionalidade 3
-
+- `Funcionalidade`: Escolhe navegar entre séries ou filmes ( dependendo das escolhas , sendo elas 1: para Séries 2: para Filmes 3: para encerrar o programa)
+- `Funcionalidade 1`: Criar Série ou Filme(dependendo da opção selecionada anteriormente)
+- `Funcionalidade 2`: Dar Play
+- `Funcionalidade 3`: Dar Pause
+- `Funcionalidade 3`: Mostrar informações sobre todos os Vídeos(podendo ser Série ou Filmes dependendo da opção selecionada anteriormente) 
+- `Funcionalidade 3`: Mostrar informações sobre um Vídeo em especifico(Sendo ele um Filme ou Série dependendo da opção selecionada anteriormente)
+- `Funcionalidade 3`: Encerrar o programa
 
 
 ## Autores
