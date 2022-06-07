@@ -19,7 +19,7 @@ Students:
 + Leonardo Henrique 
 
 + Gabrielle Rodrigues
-+ 
+
 + # 📁 Acesso ao projeto
 
 **Pegar o zip do projeto e rodar na sua máquina onde será necessário o Maven na versão 3.0.4 ou mais atual**
@@ -31,6 +31,6 @@ Students:
 
 ## Autores
 
-| [<img src="https://avatars.githubusercontent.com/u/87093107?v=4" width=115><br>](https://github.com/SergioCastro02) | [<img src="https://avatars.githubusercontent.com/u/73626380?v=4" width=115><br>](https://github.com/gabrielle-1) | [<img src="https://avatars.githubusercontent.com/u/93344968?v=4" width=115><br>](https://github.com/iTX03) | [<img src="https://avatars.githubusercontent.com/u/65732514?v=4" width=115><br>](https://github.com/leohcavalcanti) |
+[<img src="https://avatars.githubusercontent.com/u/87093107?v=4" width=115><br>](https://github.com/SergioCastro02) | [<img src="https://avatars.githubusercontent.com/u/73626380?v=4" width=115><br>](https://github.com/gabrielle-1) | [<img src="https://avatars.githubusercontent.com/u/93344968?v=4" width=115><br>](https://github.com/iTX03) | [<img src="https://avatars.githubusercontent.com/u/65732514?v=4" width=115><br>](https://github.com/leohcavalcanti) 
 
 
