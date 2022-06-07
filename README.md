@@ -31,6 +31,6 @@ Students:
 
 ## Autores
 
-| [<img src="https://avatars.githubusercontent.com/u/87093107?v=4" width=115><br><sub>SérgioHenrique</sub>](https://github.com/SergioCastro02) | [<img src="https://avatars.githubusercontent.com/u/73626380?v=4" width=115><br><sub>GabrielleRodrigues</sub>](https://github.com/gabrielle-1) | [<img src="https://avatars.githubusercontent.com/u/93344968?v=4" width=115><br><sub>IanTeixeira</sub>](https://github.com/iTX03) | [<img src="https://avatars.githubusercontent.com/u/65732514?v=4" width=115><br><sub>Leonardo Henrique</sub>](https://github.com/leohcavalcanti) |
+| [<img src="https://avatars.githubusercontent.com/u/87093107?v=4" width=115><br>](https://github.com/SergioCastro02) | [<img src="https://avatars.githubusercontent.com/u/73626380?v=4" width=115><br>](https://github.com/gabrielle-1) | [<img src="https://avatars.githubusercontent.com/u/93344968?v=4" width=115><br>](https://github.com/iTX03) | [<img src="https://avatars.githubusercontent.com/u/65732514?v=4" width=115><br>](https://github.com/leohcavalcanti) |
 
 
