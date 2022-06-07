@@ -28,3 +28,9 @@ Students:
 
 **Apresente as instruções necessárias para abrir e executar o projeto**
 
+
+## Autores
+
+| [<img src="https://avatars.githubusercontent.com/u/37356058?v=4" width=115><br><sub>Sérgio Henrique</sub>](https://github.com/SergioCastro02) |  [<img src="https://avatars.githubusercontent.com/u/30351153?v=4" width=115><br><sub>Gabrielle Rodrigues</sub>](https://github.com/gabrielle-1) |  [<img src="https://avatars.githubusercontent.com/u/8989346?v=4" width=115><br><sub>Ian Teixeira</sub>](https://github.com/iTX03) | | [<img src="https://avatars.githubusercontent.com/u/37356058?v=4" width=115><br><sub>Leonardo Henrique  </sub>](https://github.com/leohcavalcanti) | :---: |
+| :---: | :---: | :---: |
+
