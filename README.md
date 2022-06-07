@@ -19,3 +19,12 @@ Students:
 + Leonardo Henrique 
 
 + Gabrielle Rodrigues
++ 
++ # 📁 Acesso ao projeto
+
+**Pegar o zip do projeto e rodar na sua máquina onde será necessário o Maven na versão 3.0.4 ou mais atual**
+
+## 🛠️ Abrir e rodar o projeto
+
+**Apresente as instruções necessárias para abrir e executar o projeto**
+
