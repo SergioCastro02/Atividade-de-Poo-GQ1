@@ -22,7 +22,7 @@ Students:
 
 + # 📁 Acesso ao projeto
 
-Você pode acessar o código fonte do projeto iniciao ou baixá-lo 
+* Você pode acessar o código fonte do projeto iniciao ou baixá-lo *
 
 ## 🛠️ Abrir e rodar o projeto
 
