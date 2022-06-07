@@ -1,9 +1,10 @@
 package business.interfaces;
 
+
+import business.entity.Video;
 import business.exceptions.VideoAlreadyPausedException;
 import business.exceptions.VideoAlreadyPlayingException;
 import business.exceptions.VideoNotFoundException;
-import business.entity.Video;
 
 public interface IFacadeVideo {
 

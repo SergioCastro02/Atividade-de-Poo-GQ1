@@ -1,14 +1,15 @@
 package data.video;
 
 import business.entity.Episode;
-import business.interfaces.GetVideo;
 import business.entity.Movie;
 import business.entity.Serie;
-import business.exceptions.VideoNotFoundException;
+import business.entity.Video;
 import business.exceptions.VideoAlreadyPausedException;
 import business.exceptions.VideoAlreadyPlayingException;
+import business.exceptions.VideoNotFoundException;
+import business.interfaces.GetVideo;
 import data.IRepositoryVideo;
-import business.entity.Video;
+
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -25,7 +26,7 @@ public class RepositoryVideo implements IRepositoryVideo, GetVideo {
 
     @Override
     public boolean createMovie(String name, double temp, String genre, int year, String nameCast) {
-        if(name != "" && temp != 0 && year != 0 && nameCast != "" && genre != ""){
+        if(!name.equals("") && !nameCast.equals("") && !genre.equals("") && temp != 0 && year != 0){
             Video movie = new Movie(name, temp, genre, year, nameCast);
             this.midias.add(movie);
             this.cont++;
@@ -37,9 +38,8 @@ public class RepositoryVideo implements IRepositoryVideo, GetVideo {
 
     @Override
     public boolean createSerie(String name, String genre, int year, String nameCast) {
-        if(name != "" && year != 0 && nameCast != "" && genre != ""){
+        if(!name.equals("") && !nameCast.equals("") && !genre.equals("") && year != 0 ){
             Serie serie = new Serie(name, genre, year, nameCast);
-            Serie serieCast = serie;
             System.out.println("Deseja adicionar quantos episódios?");
             int op = sc.nextInt();
 
@@ -48,7 +48,7 @@ public class RepositoryVideo implements IRepositoryVideo, GetVideo {
                 String nameEp = sc.next();
                 System.out.println("Digite o tempo do episódio::");
                 double temp = sc.nextDouble();
-                serieCast.addEpisode(nameEp, temp);
+                serie.addEpisode(nameEp, temp);
             }
             this.midias.add(serie);
             this.cont++;
@@ -86,14 +86,9 @@ public class RepositoryVideo implements IRepositoryVideo, GetVideo {
 
     @Override
     public void showInformationsVideo() {
-        if(this.getVideos() > 0){
-            for(Video midia: this.midias){
-                if(midia instanceof Movie){
-                    ((Movie) midia).showInformations();
-                }else if(midia instanceof Serie){
-                    ((Serie) midia).showInformations();
-                }
-            }
+        if(this.midias.size() > 0){
+            midias.stream().filter(midia -> midia instanceof Serie).forEach(midia -> ((Serie) midia).showInformations());
+            midias.stream().filter(midia -> midia instanceof Movie).forEach(midia -> ((Movie) midia).showInformations());
         }else{
             System.out.println("Lista de vídeos vazia!!");
         }
