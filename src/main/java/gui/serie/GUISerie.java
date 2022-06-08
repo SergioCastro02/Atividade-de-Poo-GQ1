@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class GUISerie extends Main {
 
     static Scanner s = new Scanner(System.in);
-    static PavaoPrime tela01 = new PavaoPrime();
+    static PavaoPrime screenOne = new PavaoPrime();
     static FacadeVideo facadeVideo = new FacadeVideo();
 
     public static void menuSerie(){
@@ -22,9 +22,9 @@ public class GUISerie extends Main {
         System.out.println("5- Mostrar informações sobre uma série específica.");
         System.out.println("0- Encerrar o programa.");
 
-        int escolha = s.nextInt();
+        int option = s.nextInt();
 
-        switch(escolha){
+        switch(option){
             case 1://criar série
                     System.out.println("Digite o nome da série:");
                     String name = s.next();

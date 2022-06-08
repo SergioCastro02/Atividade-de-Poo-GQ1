@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class GUIMovie extends Main {
 
     static Scanner s = new Scanner(System.in);
-    static PavaoPrime tela01 = new PavaoPrime();
+    static PavaoPrime screenOne = new PavaoPrime();
     static FacadeVideo facadeVideo = new FacadeVideo();
 
     public static void menuMovie() throws VideoAlreadyPausedException, VideoAlreadyPlayingException, VideoAlreadyPausedException {

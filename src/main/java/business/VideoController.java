@@ -5,11 +5,11 @@ import business.exceptions.VideoAlreadyPlayingException;
 import business.exceptions.VideoNotFoundException;
 import data.video.RepositoryVideo;
 
-public class ControllerVideo {
+public class VideoController {
 
     private RepositoryVideo repositoryVideo;
 
-    public ControllerVideo(){
+    public VideoController(){
         this.repositoryVideo = new RepositoryVideo();
     }
 

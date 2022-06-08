@@ -60,15 +60,15 @@ public class Serie extends Video implements Information {
     
     @Override
     public void showInformations() {
-		String retorno = "Série: " + this.name + ",\n Gênero: " + this.genre +
+		String returnsInformation = "Série: " + this.name + ",\n Gênero: " + this.genre +
 			   "\n Ano: " + this.year + ",\n Nome do estúdio: " + this.nameCast;
 
-        retorno += "\nEpisódios:";
+            returnsInformation += "\nEpisódios:";
         for(Episode episode : this.episodes ){
-            retorno += "\nTítulo:" + episode.getTitulo() + 
+            returnsInformation += "\nTítulo:" + episode.getTitulo() + 
                         "\nTempo:" + episode.getTime() + "\n";
         }
-        System.out.println(retorno);
+        System.out.println(returnsInformation);
 	}
 
 }
