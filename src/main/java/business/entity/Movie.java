@@ -4,9 +4,9 @@ import business.strategys.StrategyVideo;
 
 public class Movie extends Video implements StrategyVideo {
     
-    private double time;
+    private int time;
 
-    public Movie(String name,double time, String genre, int year, String nameCast) {
+    public Movie(String name,int time, String genre, int year, String nameCast) {
         super(name, genre, year, nameCast);
         this.name = name;
         this.time = time;
@@ -15,11 +15,11 @@ public class Movie extends Video implements StrategyVideo {
         this.nameCast = nameCast;
     }
     
-    public double getTime() {
+    public int getTime() {
         return time;
     }
 
-    public void setTime(double time) {
+    public void setTime(int time) {
         this.time = time;
     }
 

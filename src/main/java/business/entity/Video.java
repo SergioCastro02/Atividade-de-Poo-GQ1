@@ -6,7 +6,7 @@ public abstract class Video {
     protected String genre;
     protected int  year;
     protected String nameCast;
-    protected double time;
+    protected int time;
     protected boolean playing;
 
     public Video (String name, String genre , int year , String nameCast) {
@@ -44,11 +44,11 @@ public abstract class Video {
         this.year = year;
     }
 
-    public double getTime() {
+    public int getTime() {
         return time;
     }
 
-    public void setTime(double time) {
+    public void setTime(int time) {
         this.time = time;
     }
 

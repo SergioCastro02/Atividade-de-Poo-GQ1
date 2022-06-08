@@ -8,6 +8,8 @@ import business.exceptions.VideoAlreadyFinishedException;
 import business.exceptions.VideoAlreadyPausedException;
 import business.exceptions.VideoAlreadyPlayingException;
 import business.exceptions.VideoNotFoundException;
+import business.threads.ThreadAdvance;
+import business.threads.ThreadPlay;
 import data.IRepositoryVideo;
 
 import java.util.ArrayList;
@@ -25,7 +27,7 @@ public class RepositoryVideo implements IRepositoryVideo {
     }
 
     @Override
-    public boolean createMovie(String name, double temp, String genre, int year, String nameCast) {
+    public boolean createMovie(String name, int temp, String genre, int year, String nameCast) {
         if(!name.equals("") && !nameCast.equals("") && !genre.equals("") && temp != 0 && year != 0){
             Video movie = new Movie(name, temp, genre, year, nameCast);
             this.midias.add(movie);
@@ -130,6 +132,18 @@ public class RepositoryVideo implements IRepositoryVideo {
         } else {
             if (!search.getPlaying()) {
                 search.setPlaying(true);
+                ThreadPlay threadAdvance = new ThreadPlay("Tocando",search.getTime());
+                Thread threadAdvanceRun = new Thread(threadAdvance);
+
+                threadAdvanceRun.start();
+
+                while(threadAdvanceRun.isAlive()){
+                    try{
+                        threadAdvanceRun.join(200);
+                    }catch (InterruptedException e){
+                        System.out.println(e.getMessage());
+                    }
+                }
                 return true;
             }
         }
@@ -146,12 +160,37 @@ public class RepositoryVideo implements IRepositoryVideo {
             double timeAcresc = this.timing += 10;
 
             if(timeAcresc < search.getTime()){
+                ThreadAdvance threadAdvance = new ThreadAdvance("Avançando",500);
+                Thread threadAdvanceRun = new Thread(threadAdvance);
+
+                threadAdvanceRun.start();
+
+                while(threadAdvanceRun.isAlive()){
+                    try{
+                        threadAdvanceRun.join(200);
+                    }catch (InterruptedException e){
+                        System.out.println(e.getMessage());
+                    }
+                }
+                System.out.println("Programa finalizado");
+                /*
                 new Thread() {
+                    double timing = 10;
                     @Override
                     public void run() {
-                        System.out.println("Tocando");
+                        try {
+                            for(double time=search.getTime(); time>=timing; time--) {
+                                System.out.println(time);
+                                Thread.sleep(1000);
+                            }
+
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        System.out.println("Filme avançado 10s..");
                     }
                 }.start();
+                 */
 
             }else{
                 throw new VideoAlreadyFinishedException("Vídeo finalizado..");

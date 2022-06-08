@@ -15,8 +15,9 @@ public class GUIMovie extends Main {
         System.out.println("1- Criar filme.");
         System.out.println("2- Dar play no filme.");
         System.out.println("3- Pausar filme.");
-        System.out.println("4- Mostrar informações sobre todos os nossos filmes.");
-        System.out.println("5- Mostrar informações sobre determinado filme.");
+        System.out.println("4- Avançar filme.");
+        System.out.println("5- Mostrar informações sobre todos os nossos filmes.");
+        System.out.println("6- Mostrar informações sobre determinado filme.");
         System.out.println("0- Encerrar o programa.");
 
         int escolha = s.nextInt();
@@ -65,15 +66,27 @@ public class GUIMovie extends Main {
                     }
                     break;
                 case 4:
+                    try {
+                        System.out.println("Digite o nome do filme");
+                        name = s.next();
+                        facadeVideo.advance(name);
+                    }catch (VideoNotFoundException e) {
+                        System.out.println(e.getMessage());
+                    } catch (VideoAlreadyFinishedException e) {
+                        System.out.println(e.getMessage());
+                    } finally {
+                        System.out.println("Operação realizada.");
+                    }
+                    break;
+                case 5:
                     System.out.println("Exibindo informações sobre nossos filmes do catálogo:");
                     facadeVideo.showInformationsVideo();
                     break;
-                case 5:
+                case 6:
                     System.out.println("Digite o nome do Filme:");
                     name = s.next();
                     facadeVideo.showInformationsVideoSpecified(name);
                     break;
-
                 case 0:
                     System.out.println("Bye bye!!");
 

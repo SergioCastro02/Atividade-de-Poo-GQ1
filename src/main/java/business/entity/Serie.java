@@ -30,7 +30,7 @@ public class Serie extends Video implements StrategyVideo {
         this.numEpisode = numEpisode;
     }
 
-    public boolean addEpisode(String name, double time){
+    public boolean addEpisode(String name, int time){
         if(name != "" && time != 0){
             Episode episode = new Episode(name, time);
             if(this.episodes.add(episode)){

@@ -14,7 +14,7 @@ public class VideoController {
         this.repositoryVideo = new RepositoryVideo();
     }
 
-    public boolean createMovie(String name, double temp, String genre, int year, String nameCast){
+    public boolean createMovie(String name, int temp, String genre, int year, String nameCast){
         return this.repositoryVideo.createMovie(name, temp, genre, year, nameCast);
     }
 
