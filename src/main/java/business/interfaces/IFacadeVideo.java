@@ -9,7 +9,7 @@ import business.exceptions.VideoNotFoundException;
 
 public interface IFacadeVideo {
 
-    boolean createMovie(String name, double temp, String genre, int year, String nameCast);
+    boolean createMovie(String name, int temp, String genre, int year, String nameCast);
 
     void showInformationsVideoSpecified(String name);
 

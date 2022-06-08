@@ -27,7 +27,7 @@ public class GUIMovie extends Main {
                         System.out.println("Digite o nome do filme");
                         String name = s.next();
                         System.out.println("Digite o tempo do filme");
-                        double time = s.nextDouble();
+                        int time = s.nextInt();
                         System.out.println("Digite o gênero do filme");
                         String genre = s.next();
                         System.out.println("Digite o ano do filme");

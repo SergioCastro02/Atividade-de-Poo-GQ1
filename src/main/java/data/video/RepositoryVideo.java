@@ -49,7 +49,7 @@ public class RepositoryVideo implements IRepositoryVideo {
                 System.out.println("Digite o nome do episódio::");
                 String nameEp = sc.next();
                 System.out.println("Digite o tempo do episódio::");
-                double temp = sc.nextDouble();
+                int temp = sc.nextInt();
                 serie.addEpisode(nameEp, temp);
             }
             this.midias.add(serie);

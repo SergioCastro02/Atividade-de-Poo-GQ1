@@ -11,7 +11,7 @@ public class FacadeVideo implements IFacadeVideo {
     private VideoController controllerVideo = new VideoController();
 
     @Override
-    public boolean createMovie(String name, double temp, String genre, int year, String nameCast) {
+    public boolean createMovie(String name, int temp, String genre, int year, String nameCast) {
         return this.controllerVideo.createMovie(name, temp, genre, year, nameCast);
     }
 
