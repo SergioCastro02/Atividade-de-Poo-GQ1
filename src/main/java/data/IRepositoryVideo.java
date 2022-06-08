@@ -1,6 +1,7 @@
 package data;
 
 import business.entity.Video;
+import business.exceptions.VideoAlreadyFinishedException;
 import business.exceptions.VideoAlreadyPausedException;
 import business.exceptions.VideoAlreadyPlayingException;
 import business.exceptions.VideoNotFoundException;
@@ -21,5 +22,9 @@ public interface IRepositoryVideo extends GetVideo {
     boolean pause(String name) throws VideoNotFoundException, VideoAlreadyPausedException;
 
     boolean play(String name) throws VideoAlreadyPlayingException, VideoNotFoundException;
+
+    void avancar() throws VideoAlreadyFinishedException;
+
+    void voltar() throws VideoAlreadyFinishedException;
 
 }

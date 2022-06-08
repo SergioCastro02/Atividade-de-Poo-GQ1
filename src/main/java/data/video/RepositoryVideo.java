@@ -4,6 +4,7 @@ import business.entity.Episode;
 import business.entity.Movie;
 import business.entity.Serie;
 import business.entity.Video;
+import business.exceptions.VideoAlreadyFinishedException;
 import business.exceptions.VideoAlreadyPausedException;
 import business.exceptions.VideoAlreadyPlayingException;
 import business.exceptions.VideoNotFoundException;
@@ -133,6 +134,16 @@ public class RepositoryVideo implements IRepositoryVideo, GetVideo {
             }
         }
         throw new VideoAlreadyPlayingException("O vídeo já está tocando!");
+    }
+
+    @Override
+    public void avancar() throws VideoAlreadyFinishedException {
+
+    }
+
+    @Override
+    public void voltar() throws VideoAlreadyFinishedException {
+
     }
 
     @Override

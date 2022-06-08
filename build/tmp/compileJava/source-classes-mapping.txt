@@ -2,12 +2,12 @@ business/entity/Episode.java
  business.entity.Episode
 business/entity/Movie.java
  business.entity.Movie
-gui/movie/GUIMovie.java
- gui.movie.GUIMovie
+data/video/RepositoryVideo.java
+ data.video.RepositoryVideo
 basico/PavaoPrime.java
  basico.PavaoPrime
-business/interfaces/IFacadeVideo.java
- business.interfaces.IFacadeVideo
+business/ControllerVideo.java
+ business.ControllerVideo
 gui/serie/GUISerie.java
  gui.serie.GUISerie
 business/entity/Video.java
@@ -36,7 +36,7 @@ business/FacadeVideo.java
  business.FacadeVideo
 data/IRepositoryVideo.java
  data.IRepositoryVideo
-data/video/RepositoryVideo.java
- data.video.RepositoryVideo
-business/ControllerVideo.java
- business.ControllerVideo
+business/interfaces/IFacadeVideo.java
+ business.interfaces.IFacadeVideo
+gui/movie/GUIMovie.java
+ gui.movie.GUIMovie
