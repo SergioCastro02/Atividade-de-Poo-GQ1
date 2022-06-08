@@ -20,27 +20,27 @@ Students:
 
 + Gabrielle Rodrigues
 
-+ # 📁 Acesso ao projeto
++ # 📁 Project access
 
-** Você pode acessar o código fonte do projeto iniciao ou baixá-lo **
+** You can access the source code of the project start or download it **
 
-## 🛠️ Abrir e rodar o projeto
+## 🛠️ Open and run the project
 
-  + Open a Existing Project (ou alguma opção similar) 
-  + Procure o local onde o projeto está e o selecione(caso o projeto seja baixado via zip, é necessário extraí-lo antes de procurá-lo) 
-  + Por fim clique em OK
+  + Open a Existing Project (or some similar option) 
+  + Find the location where the project is and select it (if the project is downloaded as a zip, it is necessary to extract it before searching for it) 
+  + Finally click OK
    
-**O projeto será necessário o Maven na versão 3.0.4 ou mais atual**
+**The project will need Maven version 3.0.4 or later**
 
-## :hammer: Funcionalidades do projeto
+## :hammer: Project features
 
-- `Funcionalidade`: Escolhe navegar entre séries ou filmes ( dependendo das escolhas , sendo elas 1: para Séries 2: para Filmes 3: para encerrar o programa)
-- `Funcionalidade 1`: Criar Série ou Filme(dependendo da opção selecionada anteriormente)
-- `Funcionalidade 2`: Dar Play
-- `Funcionalidade 3`: Dar Pause
-- `Funcionalidade 3`: Mostrar informações sobre todos os Vídeos(podendo ser Série ou Filmes dependendo da opção selecionada anteriormente) 
-- `Funcionalidade 3`: Mostrar informações sobre um Vídeo em especifico(Sendo ele um Filme ou Série dependendo da opção selecionada anteriormente)
-- `Funcionalidade 3`: Encerrar o programa
+- `Functionality`: Choose to browse between series or movies (depending on the choices, being 1: for Series, 2: for Movies, 3: to end the program)
+- `Feature 1`: Create Series or Movie(depending on option selected earlier)
+- `Feature 2`: Play
+- `Feature 3`: Pause
+- `Feature 4`: Show information about all Videos (can be Series or Movies depending on the option selected previously)
+- `Feature 5`: Show information about a specific Video (Whether it is a Movie or Series depending on the option selected previously)
+- `Feature 6`: close the program
 
 
 ## Autores
