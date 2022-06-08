@@ -1,10 +1,10 @@
 package business.entity;
 
-import business.interfaces.Information;
+import business.strategys.StrategyVideo;
 
 import java.util.ArrayList;
 
-public class Serie extends Video implements Information {
+public class Serie extends Video implements StrategyVideo {
 
     private ArrayList<Episode> episodes;
     private int numEpisode;

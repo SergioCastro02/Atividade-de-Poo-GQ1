@@ -1,8 +1,8 @@
 package business.entity;
 
-import business.interfaces.Information;
+import business.strategys.StrategyVideo;
 
-public class Movie extends Video implements Information {
+public class Movie extends Video implements StrategyVideo {
     
     private double time;
 

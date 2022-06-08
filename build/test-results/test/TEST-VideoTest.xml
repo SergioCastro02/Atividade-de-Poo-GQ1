@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="VideoTest" tests="4" skipped="1" failures="0" errors="0" timestamp="2022-06-08T13:01:13" hostname="CURADO-PC" time="0.027">
+<testsuite name="VideoTest" tests="4" skipped="1" failures="0" errors="0" timestamp="2022-06-08T19:31:40" hostname="CURADO-PC" time="0.027">
   <properties/>
   <testcase name="esperaPauseVideo()" classname="VideoTest" time="0.02">
     <skipped/>
   </testcase>
   <testcase name="esperaIncrementoMidias()" classname="VideoTest" time="0.003"/>
   <testcase name="esperaPlayVideo()" classname="VideoTest" time="0.0"/>
-  <testcase name="esperaAumentoMidias()" classname="VideoTest" time="0.0"/>
+  <testcase name="esperaAumentoMidias()" classname="VideoTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

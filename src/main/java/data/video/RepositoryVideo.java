@@ -8,6 +8,7 @@ import business.exceptions.VideoAlreadyFinishedException;
 import business.exceptions.VideoAlreadyPausedException;
 import business.exceptions.VideoAlreadyPlayingException;
 import business.exceptions.VideoNotFoundException;
+import business.strategys.StrategyVideo;
 import data.IRepositoryVideo;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class RepositoryVideo implements IRepositoryVideo {
 
     private ArrayList<Video> midias;
     private int count = 0;
+    private double timing;
 
     public RepositoryVideo(){
         this.midias = new ArrayList<>();
@@ -136,12 +138,30 @@ public class RepositoryVideo implements IRepositoryVideo {
     }
 
     @Override
-    public void avancar() throws VideoAlreadyFinishedException {
+    public void avancar(String name) throws VideoAlreadyFinishedException, VideoNotFoundException {
 
+        Video search = find(name);
+        if (search == null) {
+            throw new VideoNotFoundException("Vídeo não encontrado...");
+        }else{
+            double timeAcresc = this.timing += 10;
+
+            if(timeAcresc < search.getTime()){
+                new Thread() {
+                    @Override
+                    public void run() {
+                        this.timing = timeAcresc;
+                    }
+                }.start();
+
+            }else{
+                throw new VideoAlreadyFinishedException("Vídeo finalizado..");
+            }
+        }
     }
 
     @Override
-    public void voltar() throws VideoAlreadyFinishedException {
+    public void voltar(String name) throws VideoAlreadyFinishedException {
 
     }
 

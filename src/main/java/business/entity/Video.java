@@ -44,6 +44,14 @@ public abstract class Video {
         this.year = year;
     }
 
+    public double getTime() {
+        return time;
+    }
+
+    public void setTime(double time) {
+        this.time = time;
+    }
+
     public String getNameCast() {
         return nameCast;
     }
