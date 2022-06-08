@@ -44,7 +44,7 @@ public class FacadeVideo implements IFacadeVideo {
     }
 
     @Override
-    public void advance(String name) throws VideoAlreadyFinishedException, VideoNotFoundException {
+    public void advance(String name) throws VideoAlreadyFinishedException, VideoNotFoundException, EpisodeCantAdvanceException {
         this.controllerVideo.advance(name);
     }
 

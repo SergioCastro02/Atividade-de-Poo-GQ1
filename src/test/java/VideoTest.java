@@ -1,10 +1,7 @@
 import business.ControllerVideo;
 import business.entity.Movie;
 import business.entity.Video;
-import business.exceptions.EpisodeNotFoundException;
-import business.exceptions.ListOfEpisodesEmptyException;
-import business.exceptions.VideoAlreadyPlayingException;
-import business.exceptions.VideoNotFoundException;
+import business.exceptions.*;
 import data.IRepositoryVideo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Assumptions;
@@ -37,7 +34,7 @@ public class VideoTest {
     }
 
     @Test
-    public void esperaPlayVideo() throws VideoNotFoundException, VideoAlreadyPlayingException, EpisodeNotFoundException {
+    public void esperaPlayVideo() throws VideoAlreadyPlayingException, VideoNotFoundException, EpisodeCantAdvanceException, EpisodeNotFoundException, ListOfEpisodesEmptyException {
         controllerVideo.createMovie("It", 160, "Terror", 2017, "Warn");
         controllerVideo.play("It");
 
@@ -46,7 +43,7 @@ public class VideoTest {
     }
 
     @Test
-    public void esperaPauseVideo() throws VideoNotFoundException, VideoAlreadyPlayingException, ListOfEpisodesEmptyException {
+    public void esperaPauseVideo() throws VideoAlreadyPlayingException, VideoNotFoundException, EpisodeCantAdvanceException, EpisodeNotFoundException, ListOfEpisodesEmptyException {
         controllerVideo.createMovie("It", 160, "Terror", 2017, "Warn");
         controllerVideo.play("It");
 

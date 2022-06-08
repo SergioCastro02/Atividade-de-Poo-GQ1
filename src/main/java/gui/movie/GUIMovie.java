@@ -74,6 +74,8 @@ public class GUIMovie extends Main {
                         System.out.println(e.getMessage());
                     } catch (VideoAlreadyFinishedException e) {
                         System.out.println(e.getMessage());
+                    } catch (EpisodeCantAdvanceException e) {
+                        e.printStackTrace();
                     } finally {
                         System.out.println("Operação realizada.");
                     }
