@@ -9,11 +9,11 @@ public class PavaoPrime implements GetVideo {
     static Scanner sc = new Scanner(System.in);
 
     private ArrayList<Video> midias;
-	private int cont = 0;
+	private int count;
 
     public PavaoPrime() {
         this.midias = new ArrayList<>();
-		this.cont = 0;
+		this.count = 0;
     }
 
 

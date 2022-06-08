@@ -7,17 +7,16 @@ import business.entity.Video;
 import business.exceptions.VideoAlreadyPausedException;
 import business.exceptions.VideoAlreadyPlayingException;
 import business.exceptions.VideoNotFoundException;
-import business.interfaces.GetVideo;
 import data.IRepositoryVideo;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class RepositoryVideo implements IRepositoryVideo, GetVideo {
+public class RepositoryVideo implements IRepositoryVideo {
     static Scanner sc = new Scanner(System.in);
 
     private ArrayList<Video> midias;
-    private int cont = 0;
+    private int count = 0;
 
     public RepositoryVideo(){
         this.midias = new ArrayList<>();
@@ -28,7 +27,7 @@ public class RepositoryVideo implements IRepositoryVideo, GetVideo {
         if(!name.equals("") && !nameCast.equals("") && !genre.equals("") && temp != 0 && year != 0){
             Video movie = new Movie(name, temp, genre, year, nameCast);
             this.midias.add(movie);
-            this.cont++;
+            this.count++;
             return true;
         }else{
             return false;
@@ -50,7 +49,7 @@ public class RepositoryVideo implements IRepositoryVideo, GetVideo {
                 serie.addEpisode(nameEp, temp);
             }
             this.midias.add(serie);
-            this.cont++;
+            this.count++;
             return true;
         }else{
             return false;
@@ -70,15 +69,15 @@ public class RepositoryVideo implements IRepositoryVideo, GetVideo {
                         + " Ano do filme:" + found.getYear() +"\n"
                         + " Nome do estúdio" + found.getNameCast() +"\n");
             }else if(found instanceof Serie){
-                String retorno = "Série: " + found.getName() + ",\n Gênero: " + found.getGenre() +
+                String returnInformation = "Série: " + found.getName() + ",\n Gênero: " + found.getGenre() +
                         "\n Ano: " + found.getYear() + ",\n Nome do estúdio: " + found.getNameCast();
 
-                retorno += "\nEpisódios:";
+                returnInformation += "\nEpisódios:";
                 for(Episode episode : ((Serie) found).getEpisodes()){
-                    retorno += "\nTítulo:" + episode.getTitulo() +
+                    returnInformation += "\nTítulo:" + episode.getTitulo() +
                             "\nTempo:" + episode.getTime() + "\n";
                 }
-                System.out.println(retorno);
+                System.out.println(returnInformation);
             }
         }
     }
@@ -95,13 +94,13 @@ public class RepositoryVideo implements IRepositoryVideo, GetVideo {
 
     @Override
     public Video find(String name) {
-        Video retorno = null;
+        Video returnName = null;
         for(Video midia: this.midias){
             if (midia.getName().equals(name)){
-                retorno = midia;
+                returnName = midia;
             }
         }
-        return retorno;
+        return returnName;
     }
 
     @Override
@@ -122,13 +121,13 @@ public class RepositoryVideo implements IRepositoryVideo, GetVideo {
 
     @Override
     public boolean play(String name) throws VideoAlreadyPlayingException, VideoNotFoundException {
-        Video busca = find(name);
+        Video search = find(name);
 
-        if (busca == null) {
+        if (search == null) {
             throw new VideoNotFoundException("Vídeo não encontrado...");
         } else {
-            if (!busca.getPlaying()) {
-                busca.setPlaying(true);
+            if (!search.getPlaying()) {
+                search.setPlaying(true);
                 return true;
             }
         }

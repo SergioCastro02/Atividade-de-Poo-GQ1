@@ -2,12 +2,12 @@ package business.entity;
 
 public class Episode extends Video {
 
-    private String titulo;    
+    private String title;    
     private double time;
 
-    public Episode(String titulo, double time) {
-        super(titulo);
-        this.titulo = titulo;
+    public Episode(String title, double time) {
+        super(title);
+        this.title = title;
         this.time = time;
     }
 
@@ -20,11 +20,11 @@ public class Episode extends Video {
     }
 
     public String getTitulo() {
-        return titulo;
+        return title;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setTitulo(String title) {
+        this.title = title;
     }
 
 }
