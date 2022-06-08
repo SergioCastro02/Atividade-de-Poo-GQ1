@@ -47,7 +47,7 @@ public class GUIMovie extends Main {
                         System.out.println("Digite o nome do Video");
                         name = s.next();
                         facadeVideo.play(name);
-                    }catch(VideoNotFoundException | EpisodeNotFoundException | EpisodeCantAdvanceException | ListOfEpisodesEmptyException videoAlreadyPlayingException){
+                    }catch(VideoNotFoundException | EpisodeNotFoundException | ListOfEpisodesEmptyException videoAlreadyPlayingException){
                         videoAlreadyPlayingException.getMessage();
                     }finally{
                         System.out.println("Operação realizada.");
@@ -74,7 +74,9 @@ public class GUIMovie extends Main {
                         System.out.println(e.getMessage());
                     } catch (VideoAlreadyFinishedException e) {
                         System.out.println(e.getMessage());
-                    } catch (EpisodeCantAdvanceException e) {
+                    }catch (ListOfEpisodesEmptyException e) {
+                        e.printStackTrace();
+                    } catch (EpisodeNotFoundException e) {
                         e.printStackTrace();
                     } finally {
                         System.out.println("Operação realizada.");

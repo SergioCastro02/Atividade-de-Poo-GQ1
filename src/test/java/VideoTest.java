@@ -43,7 +43,7 @@ public class VideoTest {
     }
 
     @Test
-    public void esperaPauseVideo() throws VideoAlreadyPlayingException, VideoNotFoundException, EpisodeCantAdvanceException, EpisodeNotFoundException, ListOfEpisodesEmptyException {
+    public void esperaPauseVideo() throws VideoAlreadyPlayingException, VideoNotFoundException, EpisodeNotFoundException, ListOfEpisodesEmptyException {
         controllerVideo.createMovie("It", 160, "Terror", 2017, "Warn");
         controllerVideo.play("It");
 

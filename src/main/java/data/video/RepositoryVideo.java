@@ -151,14 +151,17 @@ public class RepositoryVideo implements IRepositoryVideo {
     }
 
     @Override
-    public void advance(String name) throws VideoAlreadyFinishedException, VideoNotFoundException, EpisodeCantAdvanceException {
+    public void advance(String name) throws VideoAlreadyFinishedException, VideoNotFoundException, ListOfEpisodesEmptyException, EpisodeNotFoundException {
 
         Video search = find(name);
 
         boolean isSerie = search instanceof Serie;
 
         if(isSerie){
-            throw new EpisodeCantAdvanceException("No momento não podemos avançar um episódio... Tente novamente mais tarde.");
+            Serie serie = (Serie) search;
+            System.out.println("Digite o nome do episódio:");
+            String nameEpisode = sc.next();
+            search = serie.searchEpisode(nameEpisode);
         }
         if (search == null) {
             throw new VideoNotFoundException("Vídeo não encontrado...");

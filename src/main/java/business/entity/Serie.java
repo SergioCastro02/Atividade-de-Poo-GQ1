@@ -15,9 +15,6 @@ public class Serie extends Video implements StrategyVideo {
         super(name, genre, year, nameCast);
         this.episodes = new ArrayList<Episode>();
     }
-    public Serie(String name) {
-        super(name);
-    }
 
     public ArrayList<Episode> getEpisodes() {
         return episodes;
@@ -77,15 +74,19 @@ public class Serie extends Video implements StrategyVideo {
 	}
 
 	public Video searchEpisode(String nameEpisode) throws EpisodeNotFoundException, ListOfEpisodesEmptyException, ListOfEpisodesEmptyException {
-        if (this.episodes.size() > 0) {
-            for (Episode episode : episodes) {
-                System.out.println(episode.getName());
-                if (episode.getTitulo().equals(nameEpisode)) {
-                    return episode;
+        if(this.episodes != null) {
+            if (this.episodes.size() > 0) {
+                for (Episode episode : episodes) {
+                    System.out.println(episode.getName());
+                    if (episode.getTitulo().equals(nameEpisode)) {
+                        return episode;
+                    }
                 }
+                throw new EpisodeNotFoundException("Episódio não encontrado.");
             }
-            throw  new EpisodeNotFoundException("Episódio não encontrado.");
+            throw new ListOfEpisodesEmptyException("Lista de episódios vazia.");
+        }else{
+            throw new ListOfEpisodesEmptyException("Lista de episódios vazia.");
         }
-        throw  new ListOfEpisodesEmptyException("Lista de episódios vazia.");
     }
 }
