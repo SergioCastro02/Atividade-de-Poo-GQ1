@@ -80,6 +80,8 @@ public class GUISerie extends Main {
                     e.printStackTrace();
                 } catch (ListOfEpisodesEmptyException listOfEpisodesEmptyException) {
                     listOfEpisodesEmptyException.printStackTrace();
+                } catch (EpisodeCantAdvanceException e) {
+                    e.printStackTrace();
                 } finally {
                     System.out.println("Operação realizada.");
                 }
