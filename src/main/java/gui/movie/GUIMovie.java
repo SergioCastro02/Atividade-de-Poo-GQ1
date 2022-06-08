@@ -1,7 +1,6 @@
 package gui.movie;
 import business.FacadeVideo;
 import gui.Main;
-import basico.PavaoPrime;
 import business.exceptions.*;
 import business.exceptions.VideoNotFoundException;
 
@@ -10,7 +9,6 @@ import java.util.Scanner;
 public class GUIMovie extends Main {
 
     static Scanner s = new Scanner(System.in);
-    static PavaoPrime screenOne = new PavaoPrime();
     static FacadeVideo facadeVideo = new FacadeVideo();
 
     public static void menuMovie() throws VideoAlreadyPausedException, VideoAlreadyPlayingException, VideoAlreadyPausedException {

@@ -1,5 +1,5 @@
 package gui.serie;
-import basico.PavaoPrime;
+import business.exceptions.VideoAlreadyFinishedException;
 import business.exceptions.VideoAlreadyPausedException;
 import business.exceptions.VideoAlreadyPlayingException;
 import business.exceptions.VideoNotFoundException;
@@ -11,15 +11,15 @@ import java.util.Scanner;
 public class GUISerie extends Main {
 
     static Scanner s = new Scanner(System.in);
-    static PavaoPrime screenOne = new PavaoPrime();
     static FacadeVideo facadeVideo = new FacadeVideo();
 
     public static void menuSerie(){
         System.out.println("1- Criar série.");
         System.out.println("2- Dar play na série.");
         System.out.println("3- Pausar série.");
-        System.out.println("4- Mostrar informações sobre as nossas séries.");
-        System.out.println("5- Mostrar informações sobre uma série específica.");
+        System.out.println("4- Avançar Série.");
+        System.out.println("5- Mostrar informações sobre as nossas séries.");
+        System.out.println("6- Mostrar informações sobre uma série específica.");
         System.out.println("0- Encerrar o programa.");
 
         int option = s.nextInt();
@@ -64,11 +64,23 @@ public class GUISerie extends Main {
                 }
                 break;
             case 4:
-                System.out.println("Exibindo informações sobre nossas séries do catálogo:");
-
-                facadeVideo.showInformationsVideo();
+                try {
+                    System.out.println("Digite o nome da série");
+                    name = s.next();
+                    facadeVideo.advance(name);
+                }catch (VideoNotFoundException e) {
+                    System.out.println(e.getMessage());
+                } catch (VideoAlreadyFinishedException e) {
+                    System.out.println(e.getMessage());
+                } finally {
+                    System.out.println("Operação realizada.");
+                }
                 break;
             case 5:
+                System.out.println("Exibindo informações sobre nossas séries do catálogo:");
+                facadeVideo.showInformationsVideo();
+                break;
+            case 6:
                 System.out.println("Digite o nome da série:");
                 name = s.next();
                 facadeVideo.showInformationsVideoSpecified(name);

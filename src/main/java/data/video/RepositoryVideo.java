@@ -8,7 +8,6 @@ import business.exceptions.VideoAlreadyFinishedException;
 import business.exceptions.VideoAlreadyPausedException;
 import business.exceptions.VideoAlreadyPlayingException;
 import business.exceptions.VideoNotFoundException;
-import business.strategys.StrategyVideo;
 import data.IRepositoryVideo;
 
 import java.util.ArrayList;
@@ -138,7 +137,7 @@ public class RepositoryVideo implements IRepositoryVideo {
     }
 
     @Override
-    public void avancar(String name) throws VideoAlreadyFinishedException, VideoNotFoundException {
+    public void advance(String name) throws VideoAlreadyFinishedException, VideoNotFoundException {
 
         Video search = find(name);
         if (search == null) {
@@ -150,7 +149,7 @@ public class RepositoryVideo implements IRepositoryVideo {
                 new Thread() {
                     @Override
                     public void run() {
-                        this.timing = timeAcresc;
+                        System.out.println("Tocando");
                     }
                 }.start();
 
@@ -161,7 +160,7 @@ public class RepositoryVideo implements IRepositoryVideo {
     }
 
     @Override
-    public void voltar(String name) throws VideoAlreadyFinishedException {
+    public void back(String name) throws VideoAlreadyFinishedException {
 
     }
 

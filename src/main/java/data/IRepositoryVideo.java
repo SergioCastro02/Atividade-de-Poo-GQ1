@@ -23,8 +23,8 @@ public interface IRepositoryVideo extends GetVideo {
 
     boolean play(String name) throws VideoAlreadyPlayingException, VideoNotFoundException;
 
-    void avancar(String name) throws VideoAlreadyFinishedException, VideoNotFoundException;
+    void advance(String name) throws VideoAlreadyFinishedException, VideoNotFoundException;
 
-    void voltar(String name) throws VideoAlreadyFinishedException, VideoAlreadyFinishedException;
+    void back(String name) throws VideoAlreadyFinishedException, VideoAlreadyFinishedException;
 
 }
