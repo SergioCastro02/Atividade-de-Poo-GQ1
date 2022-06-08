@@ -10,7 +10,6 @@ import business.exceptions.VideoNotFoundException;
 import business.interfaces.GetVideo;
 import data.IRepositoryVideo;
 
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
