@@ -43,7 +43,7 @@ public class GUISerie extends Main {
                     System.out.println("Digite o nome da série:");
                     name = s.next();
                     facadeVideo.play(name);
-                }catch(VideoAlreadyPlayingException | VideoNotFoundException | EpisodeNotFoundException | ListOfEpisodesEmpty videoAlreadyPlayingException){
+                }catch(VideoAlreadyPlayingException | VideoNotFoundException | EpisodeNotFoundException | ListOfEpisodesEmptyException | EpisodeCantAdvanceException videoAlreadyPlayingException){
                     videoAlreadyPlayingException.getMessage();
                 }finally{
                     System.out.println("Operação realizada.");
@@ -78,8 +78,8 @@ public class GUISerie extends Main {
                     System.out.println(e.getMessage());
                 } catch (EpisodeNotFoundException e) {
                     e.printStackTrace();
-                } catch (ListOfEpisodesEmpty listOfEpisodesEmpty) {
-                    listOfEpisodesEmpty.printStackTrace();
+                } catch (ListOfEpisodesEmptyException listOfEpisodesEmptyException) {
+                    listOfEpisodesEmptyException.printStackTrace();
                 } finally {
                     System.out.println("Operação realizada.");
                 }

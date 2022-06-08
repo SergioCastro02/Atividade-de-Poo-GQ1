@@ -8,8 +8,6 @@ public class ThreadPlay implements Runnable{
     public ThreadPlay(String name, int time){
         this.name = name;
         this.time = time;
-        //Thread thread = new Thread(this);
-        //thread.start();
     }
 
     @Override
@@ -23,7 +21,7 @@ public class ThreadPlay implements Runnable{
         }catch (InterruptedException e){
             System.out.println(e.getMessage());
         }
-        System.out.println("Filme finalizado");
+        System.out.println("Vídeo finalizado");
     }
 
 }

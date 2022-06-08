@@ -2,6 +2,7 @@ import business.ControllerVideo;
 import business.entity.Movie;
 import business.entity.Video;
 import business.exceptions.EpisodeNotFoundException;
+import business.exceptions.ListOfEpisodesEmptyException;
 import business.exceptions.VideoAlreadyPlayingException;
 import business.exceptions.VideoNotFoundException;
 import data.IRepositoryVideo;
@@ -45,7 +46,7 @@ public class VideoTest {
     }
 
     @Test
-    public void esperaPauseVideo() throws VideoNotFoundException, VideoAlreadyPlayingException {
+    public void esperaPauseVideo() throws VideoNotFoundException, VideoAlreadyPlayingException, ListOfEpisodesEmptyException {
         controllerVideo.createMovie("It", 160, "Terror", 2017, "Warn");
         controllerVideo.play("It");
 

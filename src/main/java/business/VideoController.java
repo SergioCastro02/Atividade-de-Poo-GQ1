@@ -35,11 +35,11 @@ public class VideoController {
         return this.repositoryVideo.pause(name);
     }
 
-    public boolean play(String name) throws VideoAlreadyPlayingException, VideoNotFoundException, EpisodeNotFoundException, ListOfEpisodesEmpty {
+    public boolean play(String name) throws VideoAlreadyPlayingException, VideoNotFoundException, EpisodeNotFoundException, ListOfEpisodesEmptyException {
         return this.repositoryVideo.play(name);
     }
 
-    public void advance(String name) throws VideoAlreadyFinishedException, VideoNotFoundException{
+    public void advance(String name) throws VideoAlreadyFinishedException, VideoNotFoundException, EpisodeCantAdvanceException {
         this.repositoryVideo.advance(name);
     }
     public void back(String name) throws VideoAlreadyFinishedException, VideoNotFoundException{

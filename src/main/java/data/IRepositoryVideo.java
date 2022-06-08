@@ -18,9 +18,9 @@ public interface IRepositoryVideo extends GetVideo {
 
     boolean pause(String name) throws VideoNotFoundException, VideoAlreadyPausedException;
 
-    boolean play(String name) throws VideoAlreadyPlayingException, VideoNotFoundException, EpisodeNotFoundException, ListOfEpisodesEmpty;
+    boolean play(String name) throws VideoAlreadyPlayingException, VideoNotFoundException, EpisodeNotFoundException, ListOfEpisodesEmptyException;
 
-    void advance(String name) throws VideoAlreadyFinishedException, VideoNotFoundException;
+    void advance(String name) throws VideoAlreadyFinishedException, VideoNotFoundException, EpisodeCantAdvanceException;
 
     void back(String name) throws VideoAlreadyFinishedException, VideoAlreadyFinishedException;
 

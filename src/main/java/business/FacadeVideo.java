@@ -39,7 +39,7 @@ public class FacadeVideo implements IFacadeVideo {
     }
 
     @Override
-    public boolean play(String name) throws VideoAlreadyPlayingException, VideoNotFoundException, ListOfEpisodesEmpty, EpisodeNotFoundException {
+    public boolean play(String name) throws VideoAlreadyPlayingException, VideoNotFoundException, EpisodeCantAdvanceException, EpisodeNotFoundException, ListOfEpisodesEmptyException {
         return this.controllerVideo.play(name);
     }
 

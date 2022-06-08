@@ -47,7 +47,7 @@ public class GUIMovie extends Main {
                         System.out.println("Digite o nome do Video");
                         name = s.next();
                         facadeVideo.play(name);
-                    }catch(VideoNotFoundException | EpisodeNotFoundException | ListOfEpisodesEmpty videoAlreadyPlayingException){
+                    }catch(VideoNotFoundException | EpisodeNotFoundException | EpisodeCantAdvanceException | ListOfEpisodesEmptyException videoAlreadyPlayingException){
                         videoAlreadyPlayingException.getMessage();
                     }finally{
                         System.out.println("Operação realizada.");
