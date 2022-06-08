@@ -4,10 +4,7 @@ import business.entity.Episode;
 import business.entity.Movie;
 import business.entity.Serie;
 import business.entity.Video;
-import business.exceptions.VideoAlreadyFinishedException;
-import business.exceptions.VideoAlreadyPausedException;
-import business.exceptions.VideoAlreadyPlayingException;
-import business.exceptions.VideoNotFoundException;
+import business.exceptions.*;
 import business.threads.ThreadAdvance;
 import business.threads.ThreadPlay;
 import data.IRepositoryVideo;
@@ -124,8 +121,14 @@ public class RepositoryVideo implements IRepositoryVideo {
     }
 
     @Override
-    public boolean play(String name) throws VideoAlreadyPlayingException, VideoNotFoundException {
+    public boolean play(String name) throws VideoAlreadyPlayingException, VideoNotFoundException, EpisodeNotFoundException, ListOfEpisodesEmpty {
         Video search = find(name);
+
+        boolean isSerie = search instanceof Serie;
+
+        if(isSerie){
+            search = ((Serie) search).searchEpisode(name);
+        }
 
         if (search == null) {
             throw new VideoNotFoundException("Vídeo não encontrado...");

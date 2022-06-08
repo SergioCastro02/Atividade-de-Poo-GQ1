@@ -1,10 +1,7 @@
 package business;
 
 import business.entity.Video;
-import business.exceptions.VideoAlreadyFinishedException;
-import business.exceptions.VideoAlreadyPausedException;
-import business.exceptions.VideoAlreadyPlayingException;
-import business.exceptions.VideoNotFoundException;
+import business.exceptions.*;
 import business.interfaces.IFacadeVideo;
 
 public class FacadeVideo implements IFacadeVideo {
@@ -42,7 +39,7 @@ public class FacadeVideo implements IFacadeVideo {
     }
 
     @Override
-    public boolean play(String name) throws VideoAlreadyPlayingException, VideoNotFoundException {
+    public boolean play(String name) throws VideoAlreadyPlayingException, VideoNotFoundException, EpisodeNotFoundException {
         return this.controllerVideo.play(name);
     }
 

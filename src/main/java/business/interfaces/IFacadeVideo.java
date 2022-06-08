@@ -2,10 +2,7 @@ package business.interfaces;
 
 
 import business.entity.Video;
-import business.exceptions.VideoAlreadyFinishedException;
-import business.exceptions.VideoAlreadyPausedException;
-import business.exceptions.VideoAlreadyPlayingException;
-import business.exceptions.VideoNotFoundException;
+import business.exceptions.*;
 
 public interface IFacadeVideo {
 
@@ -21,7 +18,7 @@ public interface IFacadeVideo {
 
     boolean pause(String name) throws VideoAlreadyPausedException, VideoNotFoundException;
 
-    boolean play(String name) throws VideoAlreadyPlayingException, VideoNotFoundException;
+    boolean play(String name) throws VideoAlreadyPlayingException, VideoNotFoundException, EpisodeNotFoundException;
 
     void advance(String name) throws VideoAlreadyFinishedException, VideoNotFoundException;
 

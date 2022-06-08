@@ -1,5 +1,7 @@
 package business.entity;
 
+import business.exceptions.EpisodeNotFoundException;
+import business.exceptions.ListOfEpisodesEmpty;
 import business.strategys.StrategyVideo;
 
 import java.util.ArrayList;
@@ -11,6 +13,10 @@ public class Serie extends Video implements StrategyVideo {
 
     public Serie(String name, String genre, int year, String nameCast) {
         super(name, genre, year, nameCast);
+        this.episodes = new ArrayList<Episode>();
+    }
+    public Serie(String name) {
+        super(name);
         this.episodes = new ArrayList<Episode>();
     }
 
@@ -71,4 +77,16 @@ public class Serie extends Video implements StrategyVideo {
         System.out.println(returnsInformation);
 	}
 
+	public Video searchEpisode(String nameEpisode) throws EpisodeNotFoundException, ListOfEpisodesEmpty, ListOfEpisodesEmpty {
+        if (this.episodes.size() > 0) {
+            for (Episode episode : episodes) {
+                System.out.println(episode.getName());
+                if (episode.getTitulo().equals(nameEpisode)) {
+                    return episode;
+                }
+            }
+            throw  new EpisodeNotFoundException("Episódio não encontrado.");
+        }
+        throw  new ListOfEpisodesEmpty("Lista de episódios vazia.");
+    }
 }

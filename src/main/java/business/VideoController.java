@@ -1,9 +1,6 @@
 package business;
 import business.entity.Video;
-import business.exceptions.VideoAlreadyFinishedException;
-import business.exceptions.VideoAlreadyPausedException;
-import business.exceptions.VideoAlreadyPlayingException;
-import business.exceptions.VideoNotFoundException;
+import business.exceptions.*;
 import data.video.RepositoryVideo;
 
 public class VideoController {
@@ -38,7 +35,7 @@ public class VideoController {
         return this.repositoryVideo.pause(name);
     }
 
-    public boolean play(String name) throws VideoAlreadyPlayingException, VideoNotFoundException {
+    public boolean play(String name) throws VideoAlreadyPlayingException, VideoNotFoundException, EpisodeNotFoundException, ListOfEpisodesEmpty {
         return this.repositoryVideo.play(name);
     }
 

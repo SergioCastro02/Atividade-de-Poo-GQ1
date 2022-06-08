@@ -1,8 +1,6 @@
 package gui.serie;
-import business.exceptions.VideoAlreadyFinishedException;
-import business.exceptions.VideoAlreadyPausedException;
-import business.exceptions.VideoAlreadyPlayingException;
-import business.exceptions.VideoNotFoundException;
+import business.entity.Serie;
+import business.exceptions.*;
 import business.FacadeVideo;
 import gui.Main;
 
@@ -45,7 +43,7 @@ public class GUISerie extends Main {
                     System.out.println("Digite o nome da série:");
                     name = s.next();
                     facadeVideo.play(name);
-                }catch(VideoAlreadyPlayingException | VideoNotFoundException videoAlreadyPlayingException){
+                }catch(VideoAlreadyPlayingException | VideoNotFoundException | EpisodeNotFoundException videoAlreadyPlayingException){
                     videoAlreadyPlayingException.getMessage();
                 }finally{
                     System.out.println("Operação realizada.");
@@ -67,11 +65,21 @@ public class GUISerie extends Main {
                 try {
                     System.out.println("Digite o nome da série");
                     name = s.next();
+                    Serie serie = new Serie(name);
+                    System.out.println("Agora digite o nome do episódio");
+                    String nameEpisode = s.next();
+                    serie.searchEpisode(nameEpisode);
+
                     facadeVideo.advance(name);
+
                 }catch (VideoNotFoundException e) {
                     System.out.println(e.getMessage());
                 } catch (VideoAlreadyFinishedException e) {
                     System.out.println(e.getMessage());
+                } catch (EpisodeNotFoundException e) {
+                    e.printStackTrace();
+                } catch (ListOfEpisodesEmpty listOfEpisodesEmpty) {
+                    listOfEpisodesEmpty.printStackTrace();
                 } finally {
                     System.out.println("Operação realizada.");
                 }

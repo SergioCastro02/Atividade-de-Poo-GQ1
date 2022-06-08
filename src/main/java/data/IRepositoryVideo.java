@@ -1,10 +1,7 @@
 package data;
 
 import business.entity.Video;
-import business.exceptions.VideoAlreadyFinishedException;
-import business.exceptions.VideoAlreadyPausedException;
-import business.exceptions.VideoAlreadyPlayingException;
-import business.exceptions.VideoNotFoundException;
+import business.exceptions.*;
 import business.interfaces.GetVideo;
 
 public interface IRepositoryVideo extends GetVideo {
@@ -21,7 +18,7 @@ public interface IRepositoryVideo extends GetVideo {
 
     boolean pause(String name) throws VideoNotFoundException, VideoAlreadyPausedException;
 
-    boolean play(String name) throws VideoAlreadyPlayingException, VideoNotFoundException;
+    boolean play(String name) throws VideoAlreadyPlayingException, VideoNotFoundException, EpisodeNotFoundException, ListOfEpisodesEmpty;
 
     void advance(String name) throws VideoAlreadyFinishedException, VideoNotFoundException;
 
