@@ -15,8 +15,8 @@ public class ThreadPlay implements Runnable{
 
         try{
             for(double i=0; i<=this.time; i++) {
-                System.out.println(name +  " - " + i);
-                Thread.sleep(500);
+                System.out.println(name +  " - " + i + "s");
+                Thread.sleep(1000);
             }
         }catch (InterruptedException e){
             System.out.println(e.getMessage());

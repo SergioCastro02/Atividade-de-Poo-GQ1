@@ -15,7 +15,7 @@ public class GUISerie extends Main {
         System.out.println("1- Criar série.");
         System.out.println("2- Dar play na série.");
         System.out.println("3- Pausar série.");
-        System.out.println("4- Avançar Série.");
+        System.out.println("4- Avançar 10s no episódio.");
         System.out.println("5- Mostrar informações sobre as nossas séries.");
         System.out.println("6- Mostrar informações sobre uma série específica.");
         System.out.println("0- Encerrar o programa.");
@@ -57,7 +57,11 @@ public class GUISerie extends Main {
                     facadeVideo.pause(name);
                 }catch(VideoAlreadyPausedException | VideoNotFoundException videoAlreadyPausedException){
                     videoAlreadyPausedException.getMessage();
-                }finally{
+                } catch (ListOfEpisodesEmptyException e) {
+                    e.printStackTrace();
+                } catch (EpisodeNotFoundException e) {
+                    e.printStackTrace();
+                } finally{
                     System.out.println("Operação realizada.");
                 }
                 break;

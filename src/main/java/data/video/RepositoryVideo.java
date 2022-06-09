@@ -105,19 +105,23 @@ public class RepositoryVideo implements IRepositoryVideo {
     }
 
     @Override
-    public boolean pause(String name) throws VideoAlreadyPausedException, VideoNotFoundException {
-        Video found = find(name);
-
-        if(found == null){
+    public boolean pause(String name) throws VideoNotFoundException, VideoAlreadyPausedException, ListOfEpisodesEmptyException, EpisodeNotFoundException {
+        Video search = find(name);
+        boolean isSerie = search instanceof Serie;
+        if(isSerie){
+            System.out.println("Digite o nome do episódio");
+            String nameEpisode = sc.next();
+            search = ((Serie) search).searchEpisode(nameEpisode);
+        }
+        if (search == null) {
             throw new VideoNotFoundException("Vídeo não encontrado...");
-        }else{
-            if(found.getPlaying()){
-                found.setPlaying(false);
+        } else {
+            if (search.getPlaying()) {
+                search.setPlaying(false);
                 return true;
-            }else{
-                throw new VideoAlreadyPausedException("Vídeo já está tocando...");
             }
         }
+        throw new VideoAlreadyPausedException("O vídeo já está tocando!");
     }
 
     @Override
@@ -125,7 +129,9 @@ public class RepositoryVideo implements IRepositoryVideo {
         Video search = find(name);
         boolean isSerie = search instanceof Serie;
         if(isSerie){
-            search = ((Serie) search).searchEpisode(name);
+            System.out.println("Digite o nome do episódio");
+            String nameEpisode = sc.next();
+            search = ((Serie) search).searchEpisode(nameEpisode);
         }
         if (search == null) {
             throw new VideoNotFoundException("Vídeo não encontrado...");
@@ -144,6 +150,7 @@ public class RepositoryVideo implements IRepositoryVideo {
                         System.out.println(e.getMessage());
                     }
                 }
+                search.setPlaying(false);
                 return true;
             }
         }
@@ -169,7 +176,7 @@ public class RepositoryVideo implements IRepositoryVideo {
             double timeAcresc = this.timing += 10;
 
             if(timeAcresc < search.getTime()){
-                ThreadAdvance threadAdvance = new ThreadAdvance("Avançando",500);
+                ThreadAdvance threadAdvance = new ThreadAdvance("Avançando");
                 Thread threadAdvanceRun = new Thread(threadAdvance);
 
                 threadAdvanceRun.start();
@@ -182,25 +189,6 @@ public class RepositoryVideo implements IRepositoryVideo {
                     }
                 }
                 System.out.println("Programa finalizado");
-                /*
-                new Thread() {
-                    double timing = 10;
-                    @Override
-                    public void run() {
-                        try {
-                            for(double time=search.getTime(); time>=timing; time--) {
-                                System.out.println(time);
-                                Thread.sleep(1000);
-                            }
-
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        System.out.println("Filme avançado 10s..");
-                    }
-                }.start();
-                 */
-
             }else{
                 throw new VideoAlreadyFinishedException("Vídeo finalizado..");
             }

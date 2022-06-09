@@ -34,7 +34,7 @@ public class FacadeVideo implements IFacadeVideo {
     }
 
     @Override
-    public boolean pause(String name) throws VideoAlreadyPausedException, VideoNotFoundException {
+    public boolean pause(String name) throws VideoNotFoundException, VideoAlreadyPausedException, ListOfEpisodesEmptyException, EpisodeNotFoundException {
         return this.controllerVideo.pause(name);
     }
 

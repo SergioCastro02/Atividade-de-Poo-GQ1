@@ -11,11 +11,11 @@ public class GUIMovie extends Main {
     static Scanner s = new Scanner(System.in);
     static FacadeVideo facadeVideo = new FacadeVideo();
 
-    public static void menuMovie() throws VideoAlreadyPausedException, VideoAlreadyPlayingException, VideoAlreadyPausedException {
+    public static void menuMovie() throws VideoAlreadyPausedException, VideoAlreadyPlayingException {
         System.out.println("1- Criar filme.");
         System.out.println("2- Dar play no filme.");
         System.out.println("3- Pausar filme.");
-        System.out.println("4- Avançar filme.");
+        System.out.println("4- Avançar 10s filme.");
         System.out.println("5- Mostrar informações sobre todos os nossos filmes.");
         System.out.println("6- Mostrar informações sobre determinado filme.");
         System.out.println("0- Encerrar o programa.");
@@ -61,7 +61,11 @@ public class GUIMovie extends Main {
                         facadeVideo.pause(name);
                     }catch(VideoAlreadyPausedException | VideoNotFoundException videoAlreadyPausedException){
                         videoAlreadyPausedException.getMessage();
-                    }finally{
+                    } catch (ListOfEpisodesEmptyException e) {
+                        e.printStackTrace();
+                    } catch (EpisodeNotFoundException e) {
+                        e.printStackTrace();
+                    } finally{
                         System.out.println("Operação realizada.");
                     }
                     break;
