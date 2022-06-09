@@ -33,7 +33,13 @@ public class GUISerie extends Main {
                     System.out.println("Digite o nome do estúdio:");
                     String nameCast = s.next();
 
-                    facadeVideo.createSerie(name, genre, year, nameCast);
+                    try{
+                        facadeVideo.createSerie(name, genre, year, nameCast);
+                    }catch (CantCreateSerieException e){
+                        System.out.println(e.getMessage());
+                    }finally {
+                        System.out.println("Operação realizada.");
+                    }
 
                     System.out.println("Operação realizada.");
                 break;
@@ -84,10 +90,28 @@ public class GUISerie extends Main {
                 }
                 break;
             case 5:
+                try {
+                    System.out.println("Digite o nome da série");
+                    name = s.next();
+                    facadeVideo.back(name);
+                }catch (VideoNotFoundException e) {
+                    System.out.println(e.getMessage());
+                } catch (VideoAlreadyFinishedException e) {
+                    System.out.println(e.getMessage());
+                }catch (ListOfEpisodesEmptyException e) {
+                    e.printStackTrace();
+                } catch (EpisodeNotFoundException e) {
+                    e.printStackTrace();
+                } finally {
+                    System.out.println("Operação realizada.");
+                }
+                break;
+
+            case 6:
                 System.out.println("Exibindo informações sobre nossas séries do catálogo:");
                 facadeVideo.showInformationsVideo();
                 break;
-            case 6:
+            case 7:
                 System.out.println("Digite o nome da série:");
                 name = s.next();
                 facadeVideo.showInformationsVideoSpecified(name);

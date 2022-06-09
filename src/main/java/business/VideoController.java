@@ -42,7 +42,7 @@ public class VideoController {
     public void advance(String name) throws VideoAlreadyFinishedException, VideoNotFoundException, ListOfEpisodesEmptyException, EpisodeNotFoundException {
         this.repositoryVideo.advance(name);
     }
-    public void back(String name) throws VideoAlreadyFinishedException, VideoNotFoundException{
+    public void back(String name) throws VideoAlreadyFinishedException, VideoNotFoundException, ListOfEpisodesEmptyException, EpisodeNotFoundException {
         this.repositoryVideo.back(name);
     }
 

@@ -22,6 +22,6 @@ public interface IRepositoryVideo extends GetVideo {
 
     void advance(String name) throws VideoAlreadyFinishedException, VideoNotFoundException, ListOfEpisodesEmptyException, EpisodeNotFoundException;
 
-    void back(String name) throws VideoAlreadyFinishedException, VideoAlreadyFinishedException;
+    void back(String name) throws VideoAlreadyFinishedException, VideoAlreadyFinishedException, ListOfEpisodesEmptyException, EpisodeNotFoundException, VideoNotFoundException;
 
 }

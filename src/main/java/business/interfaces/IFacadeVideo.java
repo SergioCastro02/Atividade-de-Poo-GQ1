@@ -22,7 +22,7 @@ public interface IFacadeVideo {
 
     void advance(String name) throws VideoAlreadyFinishedException, VideoNotFoundException, EpisodeCantAdvanceException, ListOfEpisodesEmptyException, EpisodeNotFoundException;
 
-    void back(String name) throws VideoAlreadyFinishedException, VideoNotFoundException;
+    void back(String name) throws VideoAlreadyFinishedException, VideoNotFoundException, ListOfEpisodesEmptyException, EpisodeNotFoundException;
 
     int getVideos();
 }

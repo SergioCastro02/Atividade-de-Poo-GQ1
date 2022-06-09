@@ -49,7 +49,7 @@ public class FacadeVideo implements IFacadeVideo {
     }
 
     @Override
-    public void back(String name) throws VideoAlreadyFinishedException, VideoNotFoundException {
+    public void back(String name) throws VideoAlreadyFinishedException, VideoNotFoundException, ListOfEpisodesEmptyException, EpisodeNotFoundException {
         this.controllerVideo.back(name);
     }
 

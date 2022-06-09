@@ -16,8 +16,9 @@ public class GUIMovie extends Main {
         System.out.println("2- Dar play no filme.");
         System.out.println("3- Pausar filme.");
         System.out.println("4- Avançar 10s filme.");
-        System.out.println("5- Mostrar informações sobre todos os nossos filmes.");
-        System.out.println("6- Mostrar informações sobre determinado filme.");
+        System.out.println("5- Voltar 10s filme.");
+        System.out.println("6- Mostrar informações sobre todos os nossos filmes.");
+        System.out.println("7- Mostrar informações sobre determinado filme.");
         System.out.println("0- Encerrar o programa.");
 
         int escolha = s.nextInt();
@@ -34,11 +35,13 @@ public class GUIMovie extends Main {
                         int year = s.nextInt();
                         System.out.println("Digite o nome do estúdio");
                         String nameCast = s.next();
-
-                        facadeVideo.createMovie(name, time, genre, year, nameCast);
-
-                        System.out.println("Operação realizada.");
-
+                        try{
+                            facadeVideo.createMovie(name, time, genre, year, nameCast);
+                        }catch (CantCreateMovieException e){
+                            System.out.println(e.getMessage());
+                        }finally {
+                            System.out.println("Operação realizada.");
+                        }
                     break;
 
                 case 2://play filme
@@ -86,11 +89,29 @@ public class GUIMovie extends Main {
                         System.out.println("Operação realizada.");
                     }
                     break;
+
                 case 5:
+                    try {
+                        System.out.println("Digite o nome do filme");
+                        name = s.next();
+                        facadeVideo.back(name);
+                    }catch (VideoNotFoundException e) {
+                        System.out.println(e.getMessage());
+                    } catch (VideoAlreadyFinishedException e) {
+                        System.out.println(e.getMessage());
+                    }catch (ListOfEpisodesEmptyException e) {
+                        e.printStackTrace();
+                    } catch (EpisodeNotFoundException e) {
+                        e.printStackTrace();
+                    } finally {
+                        System.out.println("Operação realizada.");
+                    }
+                    break;
+                case 6:
                     System.out.println("Exibindo informações sobre nossos filmes do catálogo:");
                     facadeVideo.showInformationsVideo();
                     break;
-                case 6:
+                case 7:
                     System.out.println("Digite o nome do Filme:");
                     name = s.next();
                     facadeVideo.showInformationsVideoSpecified(name);

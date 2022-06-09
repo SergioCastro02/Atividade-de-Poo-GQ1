@@ -6,6 +6,7 @@ import business.entity.Serie;
 import business.entity.Video;
 import business.exceptions.*;
 import business.threads.ThreadAdvance;
+import business.threads.ThreadBack;
 import business.threads.ThreadPlay;
 import data.IRepositoryVideo;
 
@@ -163,7 +164,6 @@ public class RepositoryVideo implements IRepositoryVideo {
     public void advance(String name) throws VideoAlreadyFinishedException, VideoNotFoundException, ListOfEpisodesEmptyException, EpisodeNotFoundException {
 
         Video search = find(name);
-        System.out.println(search.getName());
         boolean isSerie = search instanceof Serie;
 
         if(isSerie){
@@ -198,7 +198,41 @@ public class RepositoryVideo implements IRepositoryVideo {
     }
 
     @Override
-    public void back(String name) throws VideoAlreadyFinishedException {
+    public void back(String name) throws VideoAlreadyFinishedException, ListOfEpisodesEmptyException, EpisodeNotFoundException, VideoNotFoundException {
+        Video search = find(name);
+        System.out.println(search.getName());
+        boolean isSerie = search instanceof Serie;
+
+        if(isSerie){
+            Serie serie = (Serie) search;
+            System.out.println("Digite o nome do episódio:");
+            String nameEpisode = sc.next();
+            search = serie.searchEpisode(nameEpisode);
+        }
+        if (search == null) {
+            throw new VideoNotFoundException("Vídeo não encontrado...");
+        }else{
+            double timeAcresc = this.timing -= 10;
+
+            if(timeAcresc < search.getTime()){
+                ThreadBack threadBack = new ThreadBack("Voltando");
+                Thread threadBackRun = new Thread(threadBack);
+
+                threadBackRun.start();
+
+                while(threadBackRun.isAlive()){
+                    try{
+                        threadBackRun.join(200);
+                    }catch (InterruptedException e){
+                        System.out.println(e.getMessage());
+                    }
+                }
+                System.out.println("Programa finalizado");
+            }else{
+                throw new VideoAlreadyFinishedException("Vídeo finalizado..");
+            }
+        }
+
 
     }
 
