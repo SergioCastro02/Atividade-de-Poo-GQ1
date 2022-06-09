@@ -16,7 +16,7 @@ public interface IFacadeVideo {
 
     void showInformationsVideo();
 
-    boolean pause(String name) throws VideoAlreadyPausedException, VideoNotFoundException;
+    boolean pause(String name) throws VideoAlreadyPausedException, VideoNotFoundException, ListOfEpisodesEmptyException, EpisodeNotFoundException;
 
     boolean play(String name) throws VideoAlreadyPlayingException, VideoNotFoundException, EpisodeNotFoundException, ListOfEpisodesEmptyException, EpisodeCantAdvanceException;
 
