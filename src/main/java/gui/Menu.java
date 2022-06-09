@@ -30,7 +30,7 @@ public class Menu{
         guiSerie.menuSerie();
     }
 
-    public static void exibirMenuMovie() throws VideoAlreadyPausedException, VideoAlreadyPlayingException {
+    public static void exibirMenuMovie() throws VideoAlreadyPlayingException {
         guiMovie.menuMovie();
     }
 }
