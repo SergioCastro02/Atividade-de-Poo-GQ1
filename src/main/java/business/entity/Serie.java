@@ -78,7 +78,6 @@ public class Serie extends Video implements StrategyVideo {
             if (this.episodes.size() > 0) {
                 for (Episode episode : episodes) {
                     if (episode.getTitulo().equals(nameEpisode)) {
-                        System.out.println(episode.getName());
                         return episode;
                     }
                 }

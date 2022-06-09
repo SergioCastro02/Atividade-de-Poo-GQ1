@@ -122,7 +122,7 @@ public class RepositoryVideo implements IRepositoryVideo {
                 return true;
             }
         }
-        throw new VideoAlreadyPausedException("O vídeo já está tocando!");
+        throw new VideoAlreadyPausedException("O vídeo não estava tocando!");
     }
 
     @Override
