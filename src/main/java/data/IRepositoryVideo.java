@@ -6,9 +6,9 @@ import business.interfaces.GetVideo;
 
 public interface IRepositoryVideo extends GetVideo {
 
-    boolean createMovie(String name, int temp, String genre,int year, String nameCast);
+    boolean createMovie(String name, int temp, String genre,int year, String nameCast) throws CantCreateMovieException;
 
-    boolean createSerie(String name, String genre,int year, String nameCast);
+    boolean createSerie(String name, String genre,int year, String nameCast) throws CantCreateSerieException;
 
     void showInformationsVideoSpecified(String name);
 

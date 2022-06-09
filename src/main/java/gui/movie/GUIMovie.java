@@ -11,7 +11,7 @@ public class GUIMovie extends Main {
     static Scanner s = new Scanner(System.in);
     static FacadeVideo facadeVideo = new FacadeVideo();
 
-    public static void menuMovie() throws VideoAlreadyPausedException, VideoAlreadyPlayingException {
+    public static void menuMovie() throws VideoAlreadyPausedException, VideoAlreadyPlayingException, CantCreateMovieException {
         System.out.println("1- Criar filme.");
         System.out.println("2- Dar play no filme.");
         System.out.println("3- Pausar filme.");

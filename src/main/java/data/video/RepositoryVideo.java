@@ -24,19 +24,19 @@ public class RepositoryVideo implements IRepositoryVideo {
     }
 
     @Override
-    public boolean createMovie(String name, int temp, String genre, int year, String nameCast) {
+    public boolean createMovie(String name, int temp, String genre, int year, String nameCast) throws CantCreateMovieException {
         if(!name.equals("") && !nameCast.equals("") && !genre.equals("") && temp != 0 && year != 0){
             Video movie = new Movie(name, temp, genre, year, nameCast);
             this.midias.add(movie);
             this.count++;
             return true;
         }else{
-            return false;
+            throw new CantCreateMovieException("Desculpe.. Não foi possível criar o filme, verifique se os campos estão válidos e tente novamente.");
         }
     }
 
     @Override
-    public boolean createSerie(String name, String genre, int year, String nameCast) {
+    public boolean createSerie(String name, String genre, int year, String nameCast) throws CantCreateSerieException {
         if(!name.equals("") && !nameCast.equals("") && !genre.equals("") && year != 0 ){
             Serie serie = new Serie(name, genre, year, nameCast);
             System.out.println("Deseja adicionar quantos episódios?");
@@ -53,7 +53,7 @@ public class RepositoryVideo implements IRepositoryVideo {
             this.count++;
             return true;
         }else{
-            return false;
+            throw new CantCreateSerieException("Desculpe.. Não foi possível criar a série, verifique se os campos estão válidos e tente novamente.");
         }
 
     }
@@ -136,7 +136,7 @@ public class RepositoryVideo implements IRepositoryVideo {
         if (search == null) {
             throw new VideoNotFoundException("Vídeo não encontrado...");
         } else {
-            if (!search.getPlaying()) {
+            if (!search.getPlaying() && search.getTime() != 0) {
                 search.setPlaying(true);
                 ThreadPlay threadAdvance = new ThreadPlay("Tocando",search.getTime());
                 Thread threadAdvanceRun = new Thread(threadAdvance);
@@ -152,6 +152,8 @@ public class RepositoryVideo implements IRepositoryVideo {
                 }
                 search.setPlaying(false);
                 return true;
+            }else{
+                System.out.println("Não foi possível tocar o vídeo.");
             }
         }
         throw new VideoAlreadyPlayingException("O vídeo já está tocando!");
@@ -161,7 +163,7 @@ public class RepositoryVideo implements IRepositoryVideo {
     public void advance(String name) throws VideoAlreadyFinishedException, VideoNotFoundException, ListOfEpisodesEmptyException, EpisodeNotFoundException {
 
         Video search = find(name);
-
+        System.out.println(search.getName());
         boolean isSerie = search instanceof Serie;
 
         if(isSerie){

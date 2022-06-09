@@ -8,12 +8,12 @@ public class FacadeVideo implements IFacadeVideo {
     private VideoController controllerVideo = new VideoController();
 
     @Override
-    public boolean createMovie(String name, int temp, String genre, int year, String nameCast) {
+    public boolean createMovie(String name, int temp, String genre, int year, String nameCast) throws CantCreateMovieException {
         return this.controllerVideo.createMovie(name, temp, genre, year, nameCast);
     }
 
     @Override
-    public boolean createSerie(String name, String genre, int year, String nameCast) {
+    public boolean createSerie(String name, String genre, int year, String nameCast) throws CantCreateSerieException {
         return this.controllerVideo.createSerie(name, genre, year, nameCast);
     }
 

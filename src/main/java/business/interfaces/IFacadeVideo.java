@@ -6,11 +6,11 @@ import business.exceptions.*;
 
 public interface IFacadeVideo {
 
-    boolean createMovie(String name, int temp, String genre, int year, String nameCast);
+    boolean createMovie(String name, int temp, String genre, int year, String nameCast) throws CantCreateMovieException;
 
     void showInformationsVideoSpecified(String name);
 
-    boolean createSerie(String name, String genre, int year, String nameCast);
+    boolean createSerie(String name, String genre, int year, String nameCast) throws CantCreateSerieException;
 
     Video find(String name);
 

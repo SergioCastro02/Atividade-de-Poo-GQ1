@@ -11,7 +11,7 @@ public class GUISerie extends Main {
     static Scanner s = new Scanner(System.in);
     static FacadeVideo facadeVideo = new FacadeVideo();
 
-    public static void menuSerie(){
+    public static void menuSerie() throws CantCreateSerieException {
         System.out.println("1- Criar série.");
         System.out.println("2- Dar play na série.");
         System.out.println("3- Pausar série.");

@@ -1,6 +1,7 @@
 //Singleton
 package gui;
 
+import business.exceptions.CantCreateSerieException;
 import business.exceptions.VideoAlreadyPausedException;
 import business.exceptions.VideoAlreadyPausedException;
 import business.exceptions.VideoAlreadyPlayingException;
@@ -26,11 +27,11 @@ public class Menu{
         return menu;
     }
 
-    public static void exibirMenuSerie(){
+    public static void exibirMenuSerie() throws CantCreateSerieException{
         guiSerie.menuSerie();
     }
 
-    public static void exibirMenuMovie() throws VideoAlreadyPausedException, VideoAlreadyPlayingException{
+    public static void exibirMenuMovie() throws VideoAlreadyPausedException, VideoAlreadyPlayingException, CantCreateSerieException {
         guiMovie.menuMovie();
     }
 }

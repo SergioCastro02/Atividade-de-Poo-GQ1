@@ -11,7 +11,7 @@ public class VideoController {
         this.repositoryVideo = new RepositoryVideo();
     }
 
-    public boolean createMovie(String name, int temp, String genre, int year, String nameCast){
+    public boolean createMovie(String name, int temp, String genre, int year, String nameCast) throws CantCreateMovieException {
         return this.repositoryVideo.createMovie(name, temp, genre, year, nameCast);
     }
 
@@ -19,7 +19,7 @@ public class VideoController {
         this.repositoryVideo.showInformationsVideoSpecified(name);
     }
 
-    public boolean createSerie(String name, String genre, int year, String nameCast){
+    public boolean createSerie(String name, String genre, int year, String nameCast) throws CantCreateSerieException {
         return this.repositoryVideo.createSerie(name, genre, year, nameCast);
     }
 
