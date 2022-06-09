@@ -30,7 +30,7 @@ Students:
   + Find the location where the project is and select it (if the project is downloaded as a zip, it is necessary to extract it before searching for it) 
   + Finally click OK
    
-**The project will need Maven version 3.0.4 or later**
+**The project will need Gradle version 7.4 or later**
 
 ## :hammer: Project features
 
