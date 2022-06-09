@@ -32,4 +32,5 @@ public class Menu{
     public static void exibirMenuMovie() throws VideoAlreadyPausedException, VideoAlreadyPlayingException, CantCreateMovieException {
         guiMovie.menuMovie();
     }
+
 }
