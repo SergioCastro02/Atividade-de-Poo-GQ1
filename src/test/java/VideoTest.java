@@ -1,4 +1,4 @@
-import business.ControllerVideo;
+import business.VideoController;
 import business.entity.Movie;
 import business.entity.Video;
 import business.exceptions.*;
@@ -14,7 +14,7 @@ public class VideoTest {
 
     private ArrayList<Video> midias;
     private int cont = 0;
-    private ControllerVideo controllerVideo = new ControllerVideo();
+    private VideoController controllerVideo = new VideoController();
 
     @BeforeEach
     public void setup(){
@@ -22,19 +22,19 @@ public class VideoTest {
     }
 
     @Test
-    public void esperaAumentoMidias(){
+    public void esperaAumentoMidias() throws CantCreateMovieException {
         controllerVideo.createMovie("It", 160, "Terror", 2017, "Warn");
         Assertions.assertEquals(1, controllerVideo.getVideos());
     }
 
     @Test
-    public void esperaIncrementoMidias(){
+    public void esperaIncrementoMidias() throws CantCreateMovieException {
         controllerVideo.createMovie("It", 160, "Terror", 2017, "Warn");
         Assertions.assertEquals(1, controllerVideo.getVideos());
     }
 
     @Test
-    public void esperaPlayVideo() throws VideoAlreadyPlayingException, VideoNotFoundException, EpisodeCantAdvanceException, EpisodeNotFoundException, ListOfEpisodesEmptyException {
+    public void esperaPlayVideo() throws VideoAlreadyPlayingException, VideoNotFoundException, EpisodeCantAdvanceException, EpisodeNotFoundException, ListOfEpisodesEmptyException, CantCreateMovieException {
         controllerVideo.createMovie("It", 160, "Terror", 2017, "Warn");
         controllerVideo.play("It");
 
@@ -43,7 +43,7 @@ public class VideoTest {
     }
 
     @Test
-    public void esperaPauseVideo() throws VideoAlreadyPlayingException, VideoNotFoundException, EpisodeNotFoundException, ListOfEpisodesEmptyException {
+    public void esperaPauseVideo() throws VideoAlreadyPlayingException, VideoNotFoundException, EpisodeNotFoundException, ListOfEpisodesEmptyException, CantCreateMovieException {
         controllerVideo.createMovie("It", 160, "Terror", 2017, "Warn");
         controllerVideo.play("It");
 
