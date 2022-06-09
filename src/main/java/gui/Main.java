@@ -1,6 +1,7 @@
 package gui;
 import java.util.Scanner;
 
+import business.exceptions.CantCreateSerieException;
 import business.exceptions.VideoAlreadyPausedException;
 import business.exceptions.VideoAlreadyPlayingException;
 import business.interfaces.IFacadeVideo;
@@ -9,7 +10,7 @@ import business.FacadeVideo;
 public class Main {       
     
     static Scanner s = new Scanner(System.in);
-    public static void main(String[] args) throws VideoAlreadyPlayingException, VideoAlreadyPausedException, VideoAlreadyPausedException, VideoAlreadyPausedException {
+    public static void main(String[] args) throws VideoAlreadyPlayingException, VideoAlreadyPausedException, VideoAlreadyPausedException, VideoAlreadyPausedException, CantCreateSerieException {
         int option = 0;
 
         do {
