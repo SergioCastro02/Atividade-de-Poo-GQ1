@@ -12,6 +12,5 @@ public class ThreadAdvance implements Runnable {
         for(int i=10; i>0; i--) {
             System.out.println(name + " - " + i);
         }
-        System.out.println(name + " finalizou a execução.");
     }
 }

@@ -190,7 +190,7 @@ public class RepositoryVideo implements IRepositoryVideo {
                         System.out.println(e.getMessage());
                     }
                 }
-                System.out.println("Programa finalizado");
+                System.out.println("Vídeo avançado.");
             }else{
                 throw new VideoAlreadyFinishedException("Vídeo finalizado..");
             }
@@ -200,7 +200,6 @@ public class RepositoryVideo implements IRepositoryVideo {
     @Override
     public void back(String name) throws VideoAlreadyFinishedException, ListOfEpisodesEmptyException, EpisodeNotFoundException, VideoNotFoundException {
         Video search = find(name);
-        System.out.println(search.getName());
         boolean isSerie = search instanceof Serie;
 
         if(isSerie){

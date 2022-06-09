@@ -1,15 +1,16 @@
 package gui.movie;
 import business.FacadeVideo;
-import gui.Main;
 import business.exceptions.*;
 import business.exceptions.VideoNotFoundException;
+import business.interfaces.IFacadeVideo;
+import gui.Main;
 
 import java.util.Scanner;
 
 public class GUIMovie extends Main {
 
     static Scanner s = new Scanner(System.in);
-    static FacadeVideo facadeVideo = new FacadeVideo();
+    static IFacadeVideo facadeVideo = new FacadeVideo();
 
     public static void menuMovie() throws VideoAlreadyPausedException, VideoAlreadyPlayingException, CantCreateMovieException {
         System.out.println("1- Criar filme.");
@@ -50,7 +51,7 @@ public class GUIMovie extends Main {
                         System.out.println("Digite o nome do Video");
                         name = s.next();
                         facadeVideo.play(name);
-                    }catch(VideoNotFoundException | EpisodeNotFoundException | ListOfEpisodesEmptyException videoAlreadyPlayingException){
+                    }catch(VideoNotFoundException | EpisodeNotFoundException | ListOfEpisodesEmptyException | EpisodeCantAdvanceException videoAlreadyPlayingException){
                         videoAlreadyPlayingException.getMessage();
                     }finally{
                         System.out.println("Operação realizada.");
@@ -84,6 +85,8 @@ public class GUIMovie extends Main {
                     }catch (ListOfEpisodesEmptyException e) {
                         e.printStackTrace();
                     } catch (EpisodeNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (EpisodeCantAdvanceException e) {
                         e.printStackTrace();
                     } finally {
                         System.out.println("Operação realizada.");

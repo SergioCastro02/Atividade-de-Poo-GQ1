@@ -1,5 +1,4 @@
 package gui.serie;
-import business.entity.Serie;
 import business.exceptions.*;
 import business.FacadeVideo;
 import gui.Main;
@@ -16,8 +15,9 @@ public class GUISerie extends Main {
         System.out.println("2- Dar play na série.");
         System.out.println("3- Pausar série.");
         System.out.println("4- Avançar 10s no episódio.");
-        System.out.println("5- Mostrar informações sobre as nossas séries.");
-        System.out.println("6- Mostrar informações sobre uma série específica.");
+        System.out.println("5- Voltar 10s no episódio.");
+        System.out.println("6- Mostrar informações sobre as nossas séries.");
+        System.out.println("7- Mostrar informações sobre uma série específica.");
         System.out.println("0- Encerrar o programa.");
 
         int option = s.nextInt();
@@ -40,9 +40,7 @@ public class GUISerie extends Main {
                     }finally {
                         System.out.println("Operação realizada.");
                     }
-
-                    System.out.println("Operação realizada.");
-                break;
+                    break;
 
             case 2://play série(episódio)
                 try{
